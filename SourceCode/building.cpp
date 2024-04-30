@@ -8,8 +8,6 @@ int hp;
 Effect* effect;
 int effectNum;
 
-int t;
-int b;
 
 building::building()
 {
