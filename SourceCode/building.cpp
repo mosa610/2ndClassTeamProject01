@@ -9,6 +9,7 @@ Effect* effect;
 int effectNum;
 
 int v;
+int t;
 int b;
 
 building::building()
