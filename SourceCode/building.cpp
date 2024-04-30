@@ -8,7 +8,7 @@ int hp;
 Effect* effect;
 int effectNum;
 
-
+int v;
 int b;
 
 building::building()
