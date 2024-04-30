@@ -10,6 +10,7 @@ int effectNum;
 
 int a;
 
+int b;
 
 building::building()
 {
