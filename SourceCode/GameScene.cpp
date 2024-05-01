@@ -28,9 +28,9 @@ void GameScene::init()
     itemNum = 1;
     item_ = new Item[itemNum];
     effect = new Effect*[buildingNum];
-    for (int i = 50; i < 51; i++)
+    for (int i = 50; i < 55; i++)
     {
-        GameLib::texture::load(50, effect_data[i - 50].filename);
+        GameLib::texture::load(i, effect_data[i - 50].filename);
     }
 }
 
@@ -44,6 +44,10 @@ void GameScene::deinit()
     delete[] item_;
     delete[] effect;
     GameLib::texture::release(50);
+    GameLib::texture::release(51);
+    GameLib::texture::release(52);
+    GameLib::texture::release(53);
+    GameLib::texture::release(54);
 }
 
 void GameScene::update()
