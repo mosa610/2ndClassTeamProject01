@@ -18,6 +18,7 @@ public:
 
 static enum ItemNo
 {
+    NONE = -1,
     AXE,
     CHAINSAW,
     FIRE,

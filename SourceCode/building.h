@@ -35,4 +35,5 @@ private:
     bool texture_transition;
     int break_timer;
     bool effct_anime;
+    int effectanimeNum;
 };

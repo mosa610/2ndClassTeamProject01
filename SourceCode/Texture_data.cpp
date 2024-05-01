@@ -72,5 +72,8 @@ Texture_data back_ground[] = {
 
 
 Texture_data effect_data[] = {
-    {50,L"./Data/Images/Retro Impact Effect Pack 4 A.png",{0,32},{32,32}}
+    {50,L"./Data/Images/Retro Impact Effect Pack 4 A.png",{0,32},{32,32}},
+    {51,L"./Data/Images/fire_column_medium.png",{0,0},{32,64}},
+    {52,L"./Data/Images/FX036.png",{0,0},{32,32}},
+    {53,L"./Data/Images/SFX304.png",{0,0},{32,32}}
 };

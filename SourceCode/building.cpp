@@ -6,7 +6,6 @@
 
 int hp;
 Effect* effect;
-int effectNum;
 
 
 building::building()
@@ -42,8 +41,8 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     break_build = false;
     break_timer = 0;
     texture_transition = stage->texture_transition;
-    effectNum = 1;
     effct_anime = false;
+    effectanimeNum = 0;
 }
 
 building::~building()
@@ -106,10 +105,32 @@ void building::update()
     }
 
     if (effct_anime == true)
-    {
-        effect->effct_exprosion();
-        //effect->effct_fire();
-
+    {       
+        for (int i = 0; i < ItemNo::item_end; i++)
+        {
+            if (effectanimeNum != i) { continue; }            
+            switch (i)
+            {
+            case ItemNo::AXE:
+                effect->effct_axe();
+                break;
+            case ItemNo::CHAINSAW:
+                break;
+            case ItemNo::FIRE:
+                effect->effct_fire();
+                break;
+            case ItemNo::HAMMER:
+                effect->effct_hammer();
+                break;
+            case ItemNo::DRILL:
+                break;
+            case ItemNo::DYNAMITE:
+                effect->effct_exprosion();
+                break;
+            case ItemNo::item_end:
+                break;
+            }
+        }
         if (effect->effectTimer >= 60)
         {
             effct_anime = false;
@@ -126,9 +147,43 @@ void building::draw()
     GameLib::texture::draw(texNum, { position }, { scale }, { nowTexSize }, { texSize }, { -maxTexSize.x/2,0 }, 0,{color});
     GameLib::texture::end(texNum);
 
-    if (effct_anime == true)
+    for (int i = 0; i < ItemNo::item_end; i++)
     {
-       // effect->effect_draw();
+        if (effct_anime == true)
+        {
+            if (effectanimeNum != i) { continue; }
+            switch (i)
+            {
+            case ItemNo::AXE:
+                effect->effectNum = 53;
+                effect->effect_texsize = { 32,32 };
+                effect->effect_draw();
+                break;
+            case ItemNo::CHAINSAW:
+                break;
+            case ItemNo::FIRE:
+                effect->effectNum = 51;
+                effect->effect_center.y = 64;
+                effect->effect_texsize = { 32,64 };
+                effect->effect_draw();
+                break;
+            case ItemNo::HAMMER:
+                effect->effectNum = 52;
+                effect->effect_texsize = { 32,32 };
+                effect->effect_draw();
+                break;
+            case ItemNo::DRILL:
+                break;
+            case ItemNo::DYNAMITE:
+                effect->effectNum = 50;
+                effect->effect_texsize = { 32,32 };
+                effect->effect_draw();
+                break;
+            case ItemNo::item_end:
+                break;
+
+            }
+        }
     }
 
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
@@ -176,7 +231,6 @@ void building::hit(Item* item, int current_item)
                     break;
                 case ItemNo::item_end:
                     break;
-
                 }
                 HP -= item->getAttack();
                 item->setAttack(0);
@@ -184,6 +238,7 @@ void building::hit(Item* item, int current_item)
                 effect->effect_pos.x = item_pos.x;
                 effect->effect_pos.y = item_pos.y;
                 effct_anime = true;
+                effectanimeNum = i;
 
                 this->break_build = true;
 
