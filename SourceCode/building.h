@@ -35,5 +35,5 @@ private:
     bool texture_transition;
     int break_timer;
     bool effct_anime;
-    int building_number;
+    int effectanimeNum;
 };
