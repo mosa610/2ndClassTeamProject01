@@ -5,8 +5,8 @@
 #include "effect.h"
 
 int hp;
-Effect* effect;
 int effectNum;
+extern Effect** effect;
 
 
 building::building()
@@ -20,9 +20,9 @@ building::building()
     timer = 0;
 }
 
-building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_)
+building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_, int build_num)
 {
-    GameLib::texture::load(tex_num, texture_data[tex_num - 30].filename);
+    GameLib::texture::load(texture_data[tex_num - 30].tex_num, texture_data[tex_num - 30].filename);
     position = { position_x,750 };
     texNum = tex_num;
     texSize = { texture_data[texNum - 30].texSize_.x,
@@ -44,6 +44,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     texture_transition = stage->texture_transition;
     effectNum = 1;
     effct_anime = false;
+    building_number = build_num;
 }
 
 building::~building()
@@ -105,16 +106,20 @@ void building::update()
         color = { 1,1,1,1 };
     }
 
+
     if (effct_anime == true)
     {
-        effect->effct_exprosion();
+        effect[building_number]->effct_exprosion();
         //effect->effct_fire();
 
-        if (effect->effectTimer >= 60)
+        if (effect[building_number]->effectTimer >= 60)
         {
             effct_anime = false;
-            effect->effectTimer = 0;
-            delete effect;
+            effect[building_number]->effectTimer = 0;
+            if (effect)
+            {
+                delete effect[building_number];
+            }
         }
     }
     timer++;
@@ -128,7 +133,7 @@ void building::draw()
 
     if (effct_anime == true)
     {
-       // effect->effect_draw();
+       effect[building_number]->effect_draw();
     }
 
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
@@ -180,10 +185,13 @@ void building::hit(Item* item, int current_item)
                 }
                 HP -= item->getAttack();
                 item->setAttack(0);
-                effect = new Effect;
-                effect->effect_pos.x = item_pos.x;
-                effect->effect_pos.y = item_pos.y;
-                effct_anime = true;
+                if (effct_anime != true)
+                {
+                    effect[building_number] = new Effect;
+                    effect[building_number]->effect_pos.x = item_pos.x;
+                    effect[building_number]->effect_pos.y = item_pos.y;
+                    effct_anime = true;
+                }
 
                 this->break_build = true;
 

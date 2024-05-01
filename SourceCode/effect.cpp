@@ -5,15 +5,11 @@ Effect::Effect()
     effectTimer = 0;
     effect_pos = { 0,0 };
     effect_scale = { 8,8 };
-    for (int i = 50; i < 51; i++)
-    {
-        GameLib::texture::load(50, effect_data[i - 50].filename);
-    }
 }
 
 Effect::~Effect()
 {
-    GameLib::texture::release(50);
+
 }
 
 void Effect::effct_exprosion()
