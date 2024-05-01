@@ -214,8 +214,8 @@ void building::hit(Item* item, int current_item)
         DirectX::XMFLOAT2 build_width_height;
         build_width_height = { maxTexSize.x * scale.x,maxTexSize.y * scale.y };
 
-        if (build_pos.x<item_pos.x &&
-            build_pos.y<item_pos.y &&
+        if (build_pos.x < item_pos.x &&
+            build_pos.y < item_pos.y &&
             build_pos.x + build_width_height.x >item_pos.x &&
             build_pos.y + build_width_height.y >item_pos.y)
         {
