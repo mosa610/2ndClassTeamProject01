@@ -42,7 +42,6 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     break_timer = 0;
     texture_transition = stage->texture_transition;
     effct_anime = false;
-    building_number = build_num;
     effectanimeNum = 0;
 }
 
@@ -107,10 +106,10 @@ void building::update()
 
 
     if (effct_anime == true)
-    {       
+    {
         for (int i = 0; i < ItemNo::item_end; i++)
         {
-            if (effectanimeNum != i) { continue; }            
+            if (effectanimeNum != i) { continue; }
             switch (i)
             {
             case ItemNo::AXE:
@@ -138,10 +137,10 @@ void building::update()
         if (effect->effectTimer >= 60)
         {
             effct_anime = false;
-            effect[building_number]->effectTimer = 0;
+            effect->effectTimer = 0;
             if (effect)
             {
-                delete effect[building_number];
+                delete effect;
             }
         }
     }
