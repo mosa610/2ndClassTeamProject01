@@ -115,6 +115,7 @@ void building::update()
                 effect->effct_axe();
                 break;
             case ItemNo::CHAINSAW:
+                effect->effct_chainsaw();
                 break;
             case ItemNo::FIRE:
                 effect->effct_fire();
@@ -123,6 +124,7 @@ void building::update()
                 effect->effct_hammer();
                 break;
             case ItemNo::DRILL:
+                effect->effct_drill();
                 break;
             case ItemNo::DYNAMITE:
                 effect->effct_exprosion();
@@ -160,6 +162,11 @@ void building::draw()
                 effect->effect_draw();
                 break;
             case ItemNo::CHAINSAW:
+                effect->effectNum = 54;
+                effect->effect_texsize = { 64,64 };
+                effect->effect_center = { 32,32 };
+                effect->effect_scale = { 4,4 };
+                effect->effect_draw();
                 break;
             case ItemNo::FIRE:
                 effect->effectNum = 51;
@@ -173,6 +180,11 @@ void building::draw()
                 effect->effect_draw();
                 break;
             case ItemNo::DRILL:
+                effect->effectNum = 54;
+                effect->effect_texsize = { 64,64 };
+                effect->effect_center = { 32,32 };
+                effect->effect_scale = { 4,4 };
+                effect->effect_draw();
                 break;
             case ItemNo::DYNAMITE:
                 effect->effectNum = 50;

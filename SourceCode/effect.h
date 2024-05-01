@@ -21,6 +21,9 @@ public:
     void effct_fire();
     void effct_axe();
     void effct_hammer();
+    void effct_drill();
+    void effct_chainsaw();
+
     void effect_draw();
 };
 
