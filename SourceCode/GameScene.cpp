@@ -3,6 +3,8 @@
 #include "item.h"
 #include "stage.h"
 #include <time.h>
+#include "effect.h"
+
 
 
 GameScene GameScene::instance_;
@@ -13,6 +15,8 @@ int currentBuildingNum;
 int currentItemNum;
 building** building_;
 Item* item_;
+Effect** effect;
+
 
 void GameScene::init()
 {
@@ -23,6 +27,11 @@ void GameScene::init()
     currentItemNum = 1;
     itemNum = 1;
     item_ = new Item[itemNum];
+    effect = new Effect*[buildingNum];
+    for (int i = 50; i < 55; i++)
+    {
+        GameLib::texture::load(i, effect_data[i - 50].filename);
+    }
 }
 
 void GameScene::deinit()
@@ -33,6 +42,12 @@ void GameScene::deinit()
     }
     delete[] building_;
     delete[] item_;
+    delete[] effect;
+    GameLib::texture::release(50);
+    GameLib::texture::release(51);
+    GameLib::texture::release(52);
+    GameLib::texture::release(53);
+    GameLib::texture::release(54);
 }
 
 void GameScene::update()
@@ -44,7 +59,8 @@ void GameScene::update()
             stage01[currentBuildingNum - 1].tex_num,
             stage01[currentBuildingNum - 1].scale,
             stage01[currentBuildingNum - 1].HP,
-            stage01[currentBuildingNum - 1].regenerate);
+            stage01[currentBuildingNum - 1].regenerate,
+            currentBuildingNum);
 
         currentBuildingNum++;
     }

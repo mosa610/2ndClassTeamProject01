@@ -8,7 +8,7 @@ class building
 {
 public:
     building();
-    building(Stage_script* stage, float position_x, int tex_num, float scale_, float hp, bool regenerate_);
+    building(Stage_script* stage, float position_x, int tex_num, float scale_, float hp, bool regenerate_, int build_num);
     ~building();
 public:
     void update();

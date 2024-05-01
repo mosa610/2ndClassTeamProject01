@@ -19,9 +19,9 @@ building::building()
     timer = 0;
 }
 
-building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_)
+building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_, int build_num)
 {
-    GameLib::texture::load(tex_num, texture_data[tex_num - 30].filename);
+    GameLib::texture::load(texture_data[tex_num - 30].tex_num, texture_data[tex_num - 30].filename);
     position = { position_x,750 };
     texNum = tex_num;
     texSize = { texture_data[texNum - 30].texSize_.x,
@@ -104,11 +104,12 @@ void building::update()
         color = { 1,1,1,1 };
     }
 
+
     if (effct_anime == true)
-    {       
+    {
         for (int i = 0; i < ItemNo::item_end; i++)
         {
-            if (effectanimeNum != i) { continue; }            
+            if (effectanimeNum != i) { continue; }
             switch (i)
             {
             case ItemNo::AXE:
@@ -137,7 +138,10 @@ void building::update()
         {
             effct_anime = false;
             effect->effectTimer = 0;
-            delete effect;
+            if (effect)
+            {
+                delete effect;
+            }
         }
     }
     timer++;
