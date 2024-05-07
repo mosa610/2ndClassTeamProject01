@@ -28,6 +28,7 @@ float thunder_pos = 0;
 extern int plusHP;
 int weather;
 
+
 void GameScene::init()
 {
     srand(time(0));
