@@ -1,7 +1,7 @@
 #include "stage.h"
 
 Stage_script stage01[] = {
-    {0,600,30,2,100,true,false,0},     //time,position_x,tex_num,scale,HP,regenerate, texture_transition;
+    {0,600,30,2,100,true,false,0},     //time,position_x,tex_num,scale,HP,regenerate, texture_transition, status, weather;
     {10,200,30,2,100,true,false,0},
     {20,400,31,0.5f,100,true,false,1},
     {30,1600,30,2,100,true,false,0},

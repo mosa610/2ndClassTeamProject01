@@ -12,7 +12,7 @@ int itemStatus;
 float distHP;
 
 int plusHP;
-
+extern int weather;
 
 building::building()
 {
@@ -255,11 +255,19 @@ void building::hit(Item* item, int current_item)
                     itemStatus = Attribute::wood;
                     break;
                 case ItemNo::CHAINSAW:
+                    if (weather == Weather::thunder)
+                    {
+                        break;
+                    }
                     item->Chainsaw();
                     currentEffectNum = ItemNo::CHAINSAW;
                     itemStatus = Attribute::wood;
                     break;
                 case ItemNo::FIRE:
+                    if (weather == Weather::rain)
+                    {
+                        break;
+                    }
                     item->Fire();
                     currentEffectNum = ItemNo::FIRE;
                     itemStatus = Attribute::wood;
@@ -270,11 +278,19 @@ void building::hit(Item* item, int current_item)
                     itemStatus = Attribute::stone;
                     break;
                 case ItemNo::DRILL:
+                    if (weather == Weather::thunder)
+                    {
+                        break;
+                    }
                     item->Drill();
                     currentEffectNum = ItemNo::DRILL;
                     itemStatus = Attribute::stone;
                     break;
                 case ItemNo::DYNAMITE:
+                    if (weather == Weather::rain)
+                    {
+                        break;
+                    }
                     item->Dynamite();
                     currentEffectNum = ItemNo::DYNAMITE;
                     itemStatus = Attribute::stone;
