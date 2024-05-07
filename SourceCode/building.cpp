@@ -9,6 +9,9 @@ Effect** effect_;
 int effectNum;
 static int currentEffectNum;
 int itemStatus;
+float distHP;
+
+int plusHP;
 
 
 building::building()
@@ -58,8 +61,11 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
 
 building::~building()
 {
-    GameLib::texture::release(texNum);
-    texture_data[texNum - 30].load = false;
+    if (texture_data[texNum - 30].load == true)
+    {
+        GameLib::texture::release(texNum);
+        texture_data[texNum - 30].load = false;
+    }
 }
 
 void building::update()
@@ -279,23 +285,20 @@ void building::hit(Item* item, int current_item)
                 if (current_cost - item->getCost() >= 0)
                 {
                     current_cost -= item->getCost();
-                    HP -= item->getAttack();
+
+                    distHP = HP;
+                    if (itemStatus != buildStatus)
+                    {
+                        HP -= item->getAttack() / 2;
+                    }
+                    else
+                    {
+                        HP -= item->getAttack();
+                    }
                     item->setAttack(0);
-                    //effect_ = new Effect * [effectNum];
-                    /*for (int j = 0; j < currentEffectNum; j++)
-                    {*/
-                if (itemStatus != buildStatus)
-                {
-                    HP -= item->getAttack() / 2;
-                }
-                else
-                {
-                    HP -= item->getAttack();
-                }
-                item->setAttack(0);
-                //effect_ = new Effect * [effectNum];
-                /*for (int j = 0; j < currentEffectNum; j++)
-                {*/
+
+                    plusHP = static_cast<int>(((distHP - HP) * (distHP / MAX_HP)) / 2);
+
                     effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
                     effect_[currentEffectNum]->effect_pos.x = item_pos.x;
                     effect_[currentEffectNum]->effect_pos.y = item_pos.y;

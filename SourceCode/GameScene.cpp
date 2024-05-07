@@ -23,6 +23,7 @@ int status::current_cost;
 bool acceleration = false;
 float UI_A = 0.4f;
 int addTimer = 1;
+extern int plusHP;
 
 
 void GameScene::init()
@@ -116,8 +117,14 @@ void GameScene::update()
     {
         item_[i].update();
     }
-    if(timer_%60==0)
-    status_.addCurrentCost(1);
+    if (timer_ % 60 == 0) {
+        status_.addCurrentCost(1);
+        if (plusHP != 0)
+        {
+            status_.addCurrentCost(plusHP);
+            plusHP = 0;
+        }
+    }
     if (acceleration == true && timer_ % 2 != 0)
         timer_++;
     else
