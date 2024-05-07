@@ -112,7 +112,7 @@ void building::update()
     if (effct_anime == true)
     {
         for (int i = 0; i < ItemNo::item_end; i++)
-        {            
+        {
             if (effectanimeNum != i) { continue; }
             switch (i)
             {
