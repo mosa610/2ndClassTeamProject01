@@ -141,14 +141,14 @@ void Item::Enter()
 
 void Item::Axe()
 {
-    atk = 10;
-    cost = 100;
+    atk = 50;
+    cost = 5;
 }
 
 void Item::Chainsaw()
 {
     atk = 30;
-    cost = 500;
+    cost = 20;
 }
 
 void Item::Fire()
@@ -159,7 +159,8 @@ void Item::Fire()
 
 void Item::Hammer()
 {
-
+    atk = 50;
+    cost = 100;
 }
 
 void Item::Drill()

@@ -10,6 +10,7 @@ struct Stage_script
     float HP;
     bool regenerate;
     bool texture_transition;
+    int status;
 };
 
 extern Stage_script stage01[];

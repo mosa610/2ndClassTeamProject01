@@ -8,6 +8,6 @@ protected:
 
 enum Attribute
 {
-    wood,
     stone,
+    wood,
 };
