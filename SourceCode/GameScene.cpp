@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "mouse.h"
 #include "status.h"
 #include "building.h"
 #include "item.h"
@@ -19,6 +20,9 @@ Item* item_;
 Effect** effect;
 status status_;
 int status::current_cost;
+bool acceleration = false;
+float UI_A = 0.4f;
+int addTimer = 1;
 
 
 void GameScene::init()
@@ -35,6 +39,7 @@ void GameScene::init()
     {
         GameLib::texture::load(i, effect_data[i - 50].filename);
     }
+    GameLib::texture::load(ui[0].tex_num, ui[0].filename);
     newEffect();
 }
 
@@ -56,6 +61,28 @@ void GameScene::deinit()
 
 void GameScene::update()
 {
+    Mouse::instance()->setPosition();
+    VECTOR2 mouse_pos;
+    mouse_pos = Mouse::instance()->getPosition();
+    if (mouse_pos.x > SCREEN_W - 130 &&
+        mouse_pos.x < SCREEN_W - 130 + (ui[0].maxTexSize_.x * 0.2f + 5) &&
+        mouse_pos.y > 10 &&
+        mouse_pos.y < 10 + (ui[0].maxTexSize_.y * 0.2f + 5))
+    {
+        if (TRG_RELEASE(0) & GameLib::input::PAD_START)
+        {
+            if (acceleration) {
+                acceleration = false;
+                UI_A = 0.4f;
+                addTimer = 1;
+            }
+            else {
+                acceleration = true;
+                UI_A = 1.0f;
+                addTimer = 2;
+            }
+        }
+    }
     if (timer_ >= stage01[currentBuildingNum - 1].time * 60 && stage01[currentBuildingNum - 1].time >= 0)
     {
 
@@ -89,7 +116,10 @@ void GameScene::update()
     }
     if(timer_%60==0)
     status_.addCurrentCost(1);
-    timer_++;
+    if (acceleration == true && timer_ % 2 != 0)
+        timer_++;
+    else
+    timer_ += addTimer;
 }
 
 void GameScene::draw()
@@ -106,6 +136,11 @@ void GameScene::draw()
     {
         item_[i].draw();
     }
+    GameLib::setBlendMode(GameLib::Blender::BS_ALPHA);
+    GameLib::primitive::rect({ SCREEN_W - 130,10 }, { ui[0].maxTexSize_.x * 0.2f +5,ui[0].maxTexSize_.y * 0.2f + 5 }, { 0,0 }, 0, { 0,0,0,1 });
+    GameLib::texture::begin(ui[0].tex_num);
+    GameLib::texture::draw(ui[0].tex_num, { SCREEN_W - 130,10 }, { 0.2f,0.2f }, { ui[0].texSize_ }, { ui[0].maxTexSize_ }, { 0,0 }, 0, { 0, 1, 0, UI_A });
+    GameLib::texture::end(ui[0].tex_num);
 }
 
 void GameScene::reset()

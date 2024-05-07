@@ -79,3 +79,8 @@ Texture_data effect_data[] = {
     {53,L"./Data/Images/SFX304.png",{0,0},{32,32}},
     {54,L"./Data/Images/break_effect.png",{0,0},{64,64}}
 };
+
+Texture_data ui[] =
+{
+    {9,L"./Data/Images/Asset43.png",{0,0},{512,396}},
+};

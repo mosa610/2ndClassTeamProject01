@@ -157,7 +157,10 @@ void building::update()
             }
         }
     }
-    timer++;
+    if (addTimer > 1 && timer % 2 != 0)
+        timer++;
+    else
+        timer += addTimer;
 }
 
 void building::draw()

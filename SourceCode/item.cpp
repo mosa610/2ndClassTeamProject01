@@ -141,36 +141,38 @@ void Item::Enter()
 
 void Item::Axe()
 {
-    atk = 50;
+    atk = 20;
     cost = 5;
 }
 
 void Item::Chainsaw()
 {
-    atk = 30;
+    atk = 50;
     cost = 20;
 }
 
 void Item::Fire()
 {
     atk = 100;
-    cost = 1500;
+    cost = 40;
 }
 
 void Item::Hammer()
 {
     atk = 50;
-    cost = 100;
+    cost = 5;
 }
 
 void Item::Drill()
 {
     atk = 50;
+    cost = 20;
 }
 
 void Item::Dynamite()
 {
-    atk = 1000;
+    atk = 100;
+    cost = 40;
 }
 
 ItemUI* Item::ItemUIManager()
