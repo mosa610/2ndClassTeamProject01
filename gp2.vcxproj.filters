@@ -114,6 +114,9 @@
     <ClInclude Include="SourceCode\effect.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\自作\music\SourceCode\MusicManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="GameLib\primitive.hlsli">
@@ -229,6 +232,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\effect.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\自作\music\SourceCode\MusicManager.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\自作\music\SourceCode\MusicManager.h" />
     <ClInclude Include="GameLib\blender.h" />
     <ClInclude Include="GameLib\debug.h" />
     <ClInclude Include="GameLib\depth_stencil.h" />
@@ -274,6 +275,7 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\自作\music\SourceCode\MusicManager.cpp" />
     <ClCompile Include="GameLib\debug.cpp" />
     <ClCompile Include="GameLib\depth_stencil.cpp" />
     <ClCompile Include="GameLib\dxtk_audio.cpp" />
