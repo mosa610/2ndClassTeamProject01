@@ -29,7 +29,6 @@ float rain_pos = 0;
 float thunder_pos = 0;
 extern int plusHP;
 
-int a;
 
 void GameScene::init()
 {
