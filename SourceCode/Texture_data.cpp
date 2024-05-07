@@ -9,6 +9,7 @@ Texture_data texture_data[] = {
 
 
 Texture_data back_ground[] = {
+    {0,L"./Data/Images/back_sun.png",{0,0},{1920,1080}},
     {1,L"./Data/Images/background/Bluegridfloor0001.png",{0,0},{1920,1080} },
     {1,L"./Data/Images/background/Bluegridfloor0002.png",{0,0},{1920,1080} },
     {1,L"./Data/Images/background/Bluegridfloor0003.png",{0,0},{1920,1080} },

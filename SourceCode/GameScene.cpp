@@ -40,6 +40,7 @@ void GameScene::init()
         GameLib::texture::load(i, effect_data[i - 50].filename);
     }
     GameLib::texture::load(ui[0].tex_num, ui[0].filename);
+    GameLib::texture::load(0, back_ground[0].filename);
     newEffect();
 }
 
@@ -57,6 +58,7 @@ void GameScene::deinit()
     GameLib::texture::release(52);
     GameLib::texture::release(53);
     GameLib::texture::release(54);
+    GameLib::texture::release(0);
 }
 
 void GameScene::update()
@@ -125,6 +127,9 @@ void GameScene::update()
 void GameScene::draw()
 {
     GameLib::clear(0.2f, 0.2f, 1.0f);
+    GameLib::texture::begin(0);
+    GameLib::texture::draw(0, { 0,0 }, { 1,1 }, { back_ground[0].texSize_ }, { back_ground[0].maxTexSize_ }, { 0,0 }, 0);
+    GameLib::texture::end(0);
     for (int i = 0; i < currentBuildingNum-1; i++)
     {
         if (building_[i])

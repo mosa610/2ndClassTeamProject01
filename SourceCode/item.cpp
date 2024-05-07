@@ -159,7 +159,7 @@ void Item::Fire()
 
 void Item::Hammer()
 {
-    atk = 50;
+    atk = 20;
     cost = 5;
 }
 
