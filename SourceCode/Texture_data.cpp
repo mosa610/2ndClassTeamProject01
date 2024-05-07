@@ -2,7 +2,7 @@
 
 Texture_data texture_data[] = {
     {30,L"./Data/Images/SCS_Building_01_Blue_Daytime_01.png",{-48,0},{48,125}},     //tex_num, file_path, tex_size, max_tex_size    描画開始位置を右下とする為tex_sizeは'Y'を０'X'をマイナス表記とする
-    {31,L"./Data/Images/house2.png",{-512,0},{512,512}},
+    {31,L"./Data/Images/house2.png",{-512,0},{512,500}},
     {32,L"./Data/Images/tower_five_ver02_fin.png",{-194,0}, {192,448}},
     {33,L"./Data/Images/white_house_ver01_fin.png",{-448,0},{448,384}}
 };
@@ -83,5 +83,8 @@ Texture_data effect_data[] = {
 
 Texture_data ui[] =
 {
+    {8,L"./Data/Images/back_cloud.png",{0,0},{1920,360}},
     {9,L"./Data/Images/Asset43.png",{0,0},{512,396}},
+    {7,L"./Data/Images/back_rain.png",{0,0},{3840,1080}},
+    {6,L"./Data/Images/back_thunder.png",{0,0},{3840,1080}},
 };
