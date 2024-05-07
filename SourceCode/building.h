@@ -4,6 +4,8 @@
 #include "item.h"
 #include "stage.h"
 
+void newEffect();
+
 class building
 {
 public:

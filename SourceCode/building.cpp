@@ -46,7 +46,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     effectanimeNum = 0;
     currentEffectNum = 0;
     effectNum = 7;
-    effect_ = new Effect * [effectNum];
+    //effect_ = new Effect * [effectNum];
 }
 
 building::~building()
@@ -142,13 +142,9 @@ void building::update()
             {
                 effct_anime = false;
                 effect_[i]->effectTimer = 0;
-                if (effect_)
-                {
-                    for (int j = 0; j < currentEffectNum; j++)
-                    {
-                        delete effect_[j];
-                    }
-                    //delete[] effect_;
+                if (effect_[i])
+                {                    
+                    delete effect_[i];
                 }
             }
         }
@@ -238,21 +234,27 @@ void building::hit(Item* item, int current_item)
                 {
                 case ItemNo::AXE:
                     item->Axe();
+                    currentEffectNum = ItemNo::AXE;
                     break;
                 case ItemNo::CHAINSAW:
                     item->Chainsaw();
-                    break;
-                case ItemNo::DRILL:
-                    item->Drill();
-                    break;
-                case ItemNo::DYNAMITE:
-                    item->Dynamite();
+                    currentEffectNum = ItemNo::CHAINSAW;
                     break;
                 case ItemNo::FIRE:
                     item->Fire();
+                    currentEffectNum = ItemNo::FIRE;
                     break;
                 case ItemNo::HAMMER:
                     item->Hammer();
+                    currentEffectNum = ItemNo::HAMMER;
+                    break;
+                case ItemNo::DRILL:
+                    item->Drill();
+                    currentEffectNum = ItemNo::DRILL;
+                    break;
+                case ItemNo::DYNAMITE:
+                    item->Dynamite();
+                    currentEffectNum = ItemNo::DYNAMITE;
                     break;
                 case ItemNo::item_end:
                     break;
@@ -274,4 +276,10 @@ void building::hit(Item* item, int current_item)
             if (HP < 0) HP = 0;
         }
     }
+}
+
+
+void newEffect()
+{
+    effect_ = new Effect * [effectNum];
 }

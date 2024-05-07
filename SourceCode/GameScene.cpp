@@ -32,6 +32,7 @@ void GameScene::init()
     {
         GameLib::texture::load(i, effect_data[i - 50].filename);
     }
+    newEffect();
 }
 
 void GameScene::deinit()
