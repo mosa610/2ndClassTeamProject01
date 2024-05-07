@@ -3,9 +3,23 @@
 Effect::Effect()
 {
     effectTimer = 0;
+    effectNum = 0;
     effect_pos = { 0,0 };
     effect_scale = { 8,8 };
-    effectNum = 0;
+    effect_texpos = { 0,32 };
+    effect_texsize = { 0,32 };
+    effect_center = { 16,16 };
+}
+
+Effect::Effect(int timer, VECTOR2 pos, VECTOR2 scale, VECTOR2 texpos, VECTOR2 texsize, VECTOR2 center,int num)
+{
+    effectTimer = timer;
+    effect_pos = pos;
+    effect_scale = scale;
+    effect_texpos = texpos;
+    effect_texsize = texsize;
+    effect_center = center;
+    effectNum = num;
 }
 
 Effect::~Effect()

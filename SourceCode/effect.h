@@ -15,6 +15,7 @@ public:
     VECTOR2 effect_texsize = { 0,32 };
     VECTOR2 effect_center = { 16,16 };
     Effect();
+    Effect(int timer, VECTOR2 pos, VECTOR2 scale, VECTOR2 texpos, VECTOR2 texsize, VECTOR2 center,int num);
     ~Effect();
 
     void effct_exprosion();
