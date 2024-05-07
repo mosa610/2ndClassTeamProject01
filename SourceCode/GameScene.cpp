@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "status.h"
 #include "building.h"
 #include "item.h"
 #include "stage.h"
@@ -16,6 +17,8 @@ int currentItemNum;
 building** building_;
 Item* item_;
 Effect** effect;
+status status_;
+int status::current_cost;
 
 
 void GameScene::init()
@@ -53,10 +56,10 @@ void GameScene::deinit()
 
 void GameScene::update()
 {
-    if (timer_ >= stage01[currentBuildingNum - 1].time&&stage01[currentBuildingNum - 1].time>=0)
+    if (timer_ >= stage01[currentBuildingNum - 1].time * 60 && stage01[currentBuildingNum - 1].time >= 0)
     {
 
-        building_[currentBuildingNum - 1] = new building(&stage01[currentBuildingNum-1], stage01[currentBuildingNum - 1].position_x,
+        building_[currentBuildingNum - 1] = new building(&stage01[currentBuildingNum - 1], stage01[currentBuildingNum - 1].position_x,
             stage01[currentBuildingNum - 1].tex_num,
             stage01[currentBuildingNum - 1].scale,
             stage01[currentBuildingNum - 1].HP,
@@ -83,7 +86,8 @@ void GameScene::update()
     {
         item_[i].update();
     }
-
+    if(timer_%60==0)
+    status_.addCurrentCost(1);
     timer_++;
 }
 

@@ -6,7 +6,7 @@
 
 void newEffect();
 
-class building
+class building : public status
 {
 public:
     building();

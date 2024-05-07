@@ -9,6 +9,7 @@ Effect** effect_;
 int effectNum;
 static int currentEffectNum;
 
+
 building::building()
 {
     GameLib::texture::load(30, texture_data[0].filename);
@@ -22,7 +23,11 @@ building::building()
 
 building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_, int build_num)
 {
-    GameLib::texture::load(texture_data[tex_num - 30].tex_num, texture_data[tex_num - 30].filename);
+    if (texture_data[tex_num - 30].load == false)
+    {
+        GameLib::texture::load(texture_data[tex_num - 30].tex_num, texture_data[tex_num - 30].filename);
+        texture_data[tex_num - 30].load = true;
+    }
     position = { position_x,750 };
     texNum = tex_num;
     texSize = { texture_data[texNum - 30].texSize_.x,
@@ -52,12 +57,13 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
 building::~building()
 {
     GameLib::texture::release(texNum);
+    texture_data[texNum - 30].load = false;
 }
 
 void building::update()
 {
     texSize.y = -maxTexSize.y * (HP / MAX_HP);
-    if (timer % 1 == 0 && break_build == false)
+    if (timer % 12 == 0 && break_build == false)
     {
 
         if (HP < MAX_HP)
@@ -143,7 +149,7 @@ void building::update()
                 effct_anime = false;
                 effect_[i]->effectTimer = 0;
                 if (effect_[i])
-                {                    
+                {
                     delete effect_[i];
                 }
             }
@@ -159,7 +165,7 @@ void building::draw()
     GameLib::texture::end(texNum);
 
     for (int i = 0; i < ItemNo::item_end; i++)
-    {        
+    {
         if (effct_anime == true)
         {
             if (effectanimeNum != i) { continue; }
@@ -202,13 +208,13 @@ void building::draw()
                 break;
             case ItemNo::item_end:
                 break;
-        
+
             }
-        }        
+        }
     }
 
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
-    GameLib::debug::setString("hp%d", hp);
+    GameLib::debug::setString("cost:%d", current_cost);
 
 }
 
@@ -229,7 +235,7 @@ void building::hit(Item* item, int current_item)
             build_pos.y + build_width_height.y >item_pos.y)
         {
             if (TRG_RELEASE(0) & GameLib::input::PAD_START)
-            {                
+            {
                 switch (i)
                 {
                 case ItemNo::AXE:
@@ -259,19 +265,23 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::item_end:
                     break;
                 }
-                HP -= item->getAttack();
-                item->setAttack(0);
-                //effect_ = new Effect * [effectNum];
-                /*for (int j = 0; j < currentEffectNum; j++)
-                {*/
+                if (current_cost - item->getCost() >= 0)
+                {
+                    current_cost -= item->getCost();
+                    HP -= item->getAttack();
+                    item->setAttack(0);
+                    //effect_ = new Effect * [effectNum];
+                    /*for (int j = 0; j < currentEffectNum; j++)
+                    {*/
                     effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
                     effect_[currentEffectNum]->effect_pos.x = item_pos.x;
                     effect_[currentEffectNum]->effect_pos.y = item_pos.y;
                     effct_anime = true;
                     effectanimeNum = i;
-                //}
-                //currentEffectNum++;
-                this->break_build = true;
+                    //}
+                    //currentEffectNum++;
+                    this->break_build = true;
+                }
             }
             if (HP < 0) HP = 0;
         }

@@ -7,6 +7,7 @@ struct Texture_data
     wchar_t* filename;
     VECTOR2 texSize_;
     VECTOR2 maxTexSize_;
+    bool load = false;
 };
 
 extern Texture_data texture_data[];
