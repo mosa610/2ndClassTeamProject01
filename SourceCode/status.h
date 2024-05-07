@@ -14,3 +14,10 @@ enum Attribute
     stone,
     wood,
 };
+
+enum Weather
+{
+    nornal,
+    rain,
+    thunder,
+};
