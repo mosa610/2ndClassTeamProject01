@@ -154,7 +154,7 @@ void Item::Chainsaw()
 void Item::Fire()
 {
     atk = 100;
-    cost = 40;
+    cost = 1;
 }
 
 void Item::Hammer()
@@ -172,7 +172,7 @@ void Item::Drill()
 void Item::Dynamite()
 {
     atk = 100;
-    cost = 40;
+    cost = 1;
 }
 
 ItemUI* Item::ItemUIManager()
