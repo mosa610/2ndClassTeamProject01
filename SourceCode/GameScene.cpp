@@ -25,7 +25,7 @@ void GameScene::init()
 {
     srand(time(0));
     currentBuildingNum = 1;
-    buildingNum = 5;
+    buildingNum = 6;
     building_ = new building*[buildingNum];
     currentItemNum = 1;
     itemNum = 1;
@@ -64,7 +64,8 @@ void GameScene::update()
             stage01[currentBuildingNum - 1].scale,
             stage01[currentBuildingNum - 1].HP,
             stage01[currentBuildingNum - 1].regenerate,
-            currentBuildingNum);
+            currentBuildingNum,
+            stage01[currentBuildingNum - 1].status);
 
         currentBuildingNum++;
     }
@@ -94,7 +95,6 @@ void GameScene::update()
 void GameScene::draw()
 {
     GameLib::clear(0.2f, 0.2f, 1.0f);
-
     for (int i = 0; i < currentBuildingNum-1; i++)
     {
         if (building_[i])

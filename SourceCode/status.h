@@ -11,6 +11,6 @@ public:
 
 enum Attribute
 {
-    wood,
     stone,
+    wood,
 };

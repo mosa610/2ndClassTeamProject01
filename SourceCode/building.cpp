@@ -8,6 +8,7 @@ int hp;
 Effect** effect_;
 int effectNum;
 static int currentEffectNum;
+int itemStatus;
 
 
 building::building()
@@ -21,7 +22,7 @@ building::building()
     timer = 0;
 }
 
-building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_, int build_num)
+building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_, int build_num, int status)
 {
     if (texture_data[tex_num - 30].load == false)
     {
@@ -51,6 +52,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     effectanimeNum = 0;
     currentEffectNum = 0;
     effectNum = 7;
+    buildStatus = status;
     //effect_ = new Effect * [effectNum];
 }
 
@@ -241,26 +243,32 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::AXE:
                     item->Axe();
                     currentEffectNum = ItemNo::AXE;
+                    itemStatus = Attribute::wood;
                     break;
                 case ItemNo::CHAINSAW:
                     item->Chainsaw();
                     currentEffectNum = ItemNo::CHAINSAW;
+                    itemStatus = Attribute::wood;
                     break;
                 case ItemNo::FIRE:
                     item->Fire();
                     currentEffectNum = ItemNo::FIRE;
+                    itemStatus = Attribute::wood;
                     break;
                 case ItemNo::HAMMER:
                     item->Hammer();
                     currentEffectNum = ItemNo::HAMMER;
+                    itemStatus = Attribute::stone;
                     break;
                 case ItemNo::DRILL:
                     item->Drill();
                     currentEffectNum = ItemNo::DRILL;
+                    itemStatus = Attribute::stone;
                     break;
                 case ItemNo::DYNAMITE:
                     item->Dynamite();
                     currentEffectNum = ItemNo::DYNAMITE;
+                    itemStatus = Attribute::stone;
                     break;
                 case ItemNo::item_end:
                     break;
@@ -273,6 +281,18 @@ void building::hit(Item* item, int current_item)
                     //effect_ = new Effect * [effectNum];
                     /*for (int j = 0; j < currentEffectNum; j++)
                     {*/
+                if (itemStatus != buildStatus)
+                {
+                    HP -= item->getAttack() / 2;
+                }
+                else
+                {
+                    HP -= item->getAttack();
+                }
+                item->setAttack(0);
+                //effect_ = new Effect * [effectNum];
+                /*for (int j = 0; j < currentEffectNum; j++)
+                {*/
                     effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
                     effect_[currentEffectNum]->effect_pos.x = item_pos.x;
                     effect_[currentEffectNum]->effect_pos.y = item_pos.y;

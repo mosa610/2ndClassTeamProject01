@@ -10,7 +10,7 @@ class building : public status
 {
 public:
     building();
-    building(Stage_script* stage, float position_x, int tex_num, float scale_, float hp, bool regenerate_, int build_num);
+    building(Stage_script* stage, float position_x, int tex_num, float scale_, float hp, bool regenerate_, int build_num, int status);
     ~building();
 public:
     void update();
@@ -38,5 +38,6 @@ private:
     int break_timer;
     bool effct_anime;
     int effectanimeNum;
+    int buildStatus;
     Attribute attribute;
 };
