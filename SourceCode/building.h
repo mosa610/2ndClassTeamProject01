@@ -36,4 +36,5 @@ private:
     int break_timer;
     bool effct_anime;
     int effectanimeNum;
+    Attribute attribute;
 };
