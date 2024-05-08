@@ -22,6 +22,7 @@ void TitleScene::init()
 
 void TitleScene::deinit()
 {
+    GameLib::texture::release(2);
 }
 
 void TitleScene::update()

@@ -28,6 +28,10 @@ float thunder_pos = 0;
 extern int plusHP;
 int weather;
 int weatherTimer = 0;
+extern float hage_pos_x;
+extern float hage_scale_x;
+float hage_texpos_x = 64;
+float hage_texpos_y = 0;
 
 void GameScene::init()
 {
@@ -66,6 +70,8 @@ void GameScene::deinit()
     GameLib::texture::release(53);
     GameLib::texture::release(54);
     GameLib::texture::release(0);
+    GameLib::texture::release(6);
+    GameLib::texture::release(7);
 }
 
 void GameScene::update()
@@ -135,10 +141,12 @@ void GameScene::update()
     if (timer_ % 10 < 5)
     {
         rain_pos = 1920;
+        hage_texpos_x = 64;
     }
     else
     {
         rain_pos = 0;
+        hage_texpos_x = 0;
     }
     if (timer_ % 10 < 5)
     {
@@ -162,6 +170,15 @@ void GameScene::update()
             plusHP = 0;
         }
     }
+    hage();
+    if (timer_ % 30 < 15)
+    {
+        hage_texpos_x = 64;
+    }
+    else
+    {
+        hage_texpos_x = 0;
+    }
     if (acceleration == true && timer_ % 2 != 0)
         timer_++;
     else
@@ -181,6 +198,10 @@ void GameScene::draw()
             building_[i]->draw();
         }
     }
+    GameLib::primitive::circle({ hage_pos_x,690 }, 200, { 1,1 }, 0, { 1,0,0,0.5f });
+    GameLib::texture::begin(ui[4].tex_num);
+    GameLib::texture::draw(ui[4].tex_num, { hage_pos_x,690 }, { -hage_scale_x,2 }, { hage_texpos_x,hage_texpos_y }, { 64,64 }, { 32,32 }, 0, { 1,1,1,1 });
+    GameLib::texture::end(ui[4].tex_num);
     for (int i = 0; i < currentItemNum; i++)
     {
         item_[i].draw();

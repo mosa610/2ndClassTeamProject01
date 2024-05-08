@@ -5,7 +5,7 @@
 #include "stage.h"
 
 void newEffect(int effectNum);
-
+void hage();
 class building : public status
 {
 public:
