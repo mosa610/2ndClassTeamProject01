@@ -185,6 +185,7 @@
     <ClInclude Include="SourceCode\status.h" />
     <ClInclude Include="SourceCode\Texture_data.h" />
     <ClInclude Include="SourceCode\titleScene.h" />
+    <ClInclude Include="SourceCode\tutorialScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameLib\primitive.hlsli" />
@@ -299,6 +300,7 @@
     <ClCompile Include="SourceCode\stage.cpp" />
     <ClCompile Include="SourceCode\Texture_data.cpp" />
     <ClCompile Include="SourceCode\titleScene.cpp" />
+    <ClCompile Include="SourceCode\tutorialScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

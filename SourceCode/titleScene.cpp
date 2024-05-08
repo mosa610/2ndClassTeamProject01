@@ -1,5 +1,8 @@
 #include "titleScene.h"
+#include "GameScene.h"
+#include "tutorialScene.h"
 #include "Texture_data.h"
+#include "mouse.h"
 
 TitleScene TitleScene::instance_;
 int timer;
@@ -33,8 +36,26 @@ void TitleScene::update()
     motion_timer++;
     cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
        static_cast<float>(GameLib::input::getCursorPosY()) };
-
-
+    if (TRG(0) & GameLib::input::PAD_START)
+    {
+        if (cursorPos.x > play.x &&
+            cursorPos.y > play.y &&
+            cursorPos.x < play.x + 350 &&
+            cursorPos.y < play.y + 200)
+        {
+            changeScene(GameScene::instance());
+        }
+    }
+    if (TRG(0) & GameLib::input::PAD_START)
+    {
+        if (cursorPos.x > tutorial.x &&
+            cursorPos.y > tutorial.y &&
+            cursorPos.x < tutorial.x + 350 &&
+            cursorPos.y < tutorial.y + 200)
+        {
+            changeScene(TutorialScene::instance());
+        }
+    }
 }
 
 void TitleScene::draw()
@@ -44,7 +65,7 @@ void TitleScene::draw()
     GameLib::texture::draw(1, { 0,0 }, { 1,1 }, { back_ground[timer].texSize_}, {back_ground[timer].maxTexSize_}, {0,0}, 0);
     GameLib::texture::end(1);
     GameLib::primitive::rect({ play.x,play.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
-    GameLib::primitive::rect({ tutorial.x,tutorial.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
+    GameLib::primitive::rect({ tutorial.x,tutorial.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });
     reset();
 }
 
