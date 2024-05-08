@@ -180,6 +180,8 @@
     <ClInclude Include="SourceCode\GameScene.h" />
     <ClInclude Include="SourceCode\item.h" />
     <ClInclude Include="SourceCode\mouse.h" />
+    <ClInclude Include="SourceCode\Music.h" />
+    <ClInclude Include="SourceCode\MusicManager.h" />
     <ClInclude Include="SourceCode\scene.h" />
     <ClInclude Include="SourceCode\stage.h" />
     <ClInclude Include="SourceCode\status.h" />
@@ -296,6 +298,7 @@
     <ClCompile Include="SourceCode\item.cpp" />
     <ClCompile Include="SourceCode\main.cpp" />
     <ClCompile Include="SourceCode\mouse.cpp" />
+    <ClCompile Include="SourceCode\MusicManager.cpp" />
     <ClCompile Include="SourceCode\Scene.cpp" />
     <ClCompile Include="SourceCode\stage.cpp" />
     <ClCompile Include="SourceCode\Texture_data.cpp" />

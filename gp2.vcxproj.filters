@@ -234,8 +234,5 @@
     <ClCompile Include="SourceCode\effect.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\tutorialScene.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
