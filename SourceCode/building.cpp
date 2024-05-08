@@ -131,7 +131,7 @@ void building::update()
             switch (i)
             {
             case ItemNo::AXE:
-                effect_[i]->effct_axe();
+                effect_[ItemNo::AXE]->effct_axe();
                 break;
             case ItemNo::CHAINSAW:
                 if (weather == Weather::thunder)
@@ -154,7 +154,7 @@ void building::update()
                     break;
                 }
             case ItemNo::HAMMER:
-                effect_[i]->effct_hammer();
+                effect_[ItemNo::HAMMER]->effct_hammer();
                 break;
             case ItemNo::DRILL:
                 if (weather == Weather::thunder)
@@ -211,9 +211,9 @@ void building::draw()
             switch (i)
             {
             case ItemNo::AXE:
-                effect_[i]->effectNum = 53;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::AXE]->effectNum = 53;
+                effect_[ItemNo::AXE]->effect_texsize = { 32,32 };
+                effect_[ItemNo::AXE]->effect_draw();
                 break;
             case ItemNo::CHAINSAW:
                 if (weather == Weather::thunder)
@@ -243,9 +243,9 @@ void building::draw()
                     break;
                 }
             case ItemNo::HAMMER:
-                effect_[i]->effectNum = 52;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::HAMMER]->effectNum = 52;
+                effect_[ItemNo::HAMMER]->effect_texsize = { 32,32 };
+                effect_[ItemNo::HAMMER]->effect_draw();
                 break;
             case ItemNo::DRILL:
                 if (weather == Weather::thunder)
@@ -383,11 +383,15 @@ void building::hit(Item* item, int current_item)
 
                     plusHP = static_cast<int>(((distHP - HP) * (distHP / MAX_HP)) / 2);
 
+
                     effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
+
+
                     effect_[currentEffectNum]->effect_pos.x = item_pos.x;
                     effect_[currentEffectNum]->effect_pos.y = item_pos.y;
                     effct_anime = true;
                     effectanimeNum = i;
+
                     //}
                     //currentEffectNum++;
                     this->break_build = true;
@@ -399,7 +403,8 @@ void building::hit(Item* item, int current_item)
 }
 
 
-void newEffect()
+void newEffect(int effectNum)
 {
     effect_ = new Effect * [effectNum];
+
 }
