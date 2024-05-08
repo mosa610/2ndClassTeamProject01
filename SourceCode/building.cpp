@@ -12,7 +12,7 @@ int itemStatus;
 float distHP;
 
 int plusHP;
-
+extern int weather;
 
 building::building()
 {
@@ -134,20 +134,48 @@ void building::update()
                 effect_[ItemNo::AXE]->effct_axe();
                 break;
             case ItemNo::CHAINSAW:
-                effect_[ItemNo::CHAINSAW]->effct_chainsaw();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_chainsaw();
+                    break;
+                }
             case ItemNo::FIRE:
-                effect_[ItemNo::FIRE]->effct_fire();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_fire();
+                    break;
+                }
             case ItemNo::HAMMER:
                 effect_[ItemNo::HAMMER]->effct_hammer();
                 break;
             case ItemNo::DRILL:
-                effect_[ItemNo::DRILL]->effct_drill();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_drill();
+                    break;
+                }
             case ItemNo::DYNAMITE:
-                effect_[ItemNo::DYNAMITE]->effct_exprosion();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_exprosion();
+                    break;
+                }
             case ItemNo::item_end:
                 break;
             }
@@ -188,35 +216,63 @@ void building::draw()
                 effect_[ItemNo::AXE]->effect_draw();
                 break;
             case ItemNo::CHAINSAW:
-                effect_[ItemNo::CHAINSAW]->effectNum = 54;
-                effect_[ItemNo::CHAINSAW]->effect_texsize = { 64,64 };
-                effect_[ItemNo::CHAINSAW]->effect_center = { 32,32 };
-                effect_[ItemNo::CHAINSAW]->effect_scale = { 4,4 };
-                effect_[ItemNo::CHAINSAW]->effect_draw();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 54;
+                    effect_[i]->effect_texsize = { 64,64 };
+                    effect_[i]->effect_center = { 32,32 };
+                    effect_[i]->effect_scale = { 4,4 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::FIRE:
-                effect_[ItemNo::FIRE]->effectNum = 51;
-                effect_[ItemNo::FIRE]->effect_center.y = 64;
-                effect_[ItemNo::FIRE]->effect_texsize = { 32,64 };
-                effect_[ItemNo::FIRE]->effect_draw();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 51;
+                    effect_[i]->effect_center.y = 64;
+                    effect_[i]->effect_texsize = { 32,64 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::HAMMER:
                 effect_[ItemNo::HAMMER]->effectNum = 52;
                 effect_[ItemNo::HAMMER]->effect_texsize = { 32,32 };
                 effect_[ItemNo::HAMMER]->effect_draw();
                 break;
             case ItemNo::DRILL:
-                effect_[ItemNo::DRILL]->effectNum = 54;
-                effect_[ItemNo::DRILL]->effect_texsize = { 64,64 };
-                effect_[ItemNo::DRILL]->effect_center = { 32,32 };
-                effect_[ItemNo::DRILL]->effect_scale = { 4,4 };
-                effect_[ItemNo::DRILL]->effect_draw();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 54;
+                    effect_[i]->effect_texsize = { 64,64 };
+                    effect_[i]->effect_center = { 32,32 };
+                    effect_[i]->effect_scale = { 4,4 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::DYNAMITE:
-                effect_[ItemNo::DYNAMITE]->effectNum = 50;
-                effect_[ItemNo::DYNAMITE]->effect_texsize = { 32,32 };
-                effect_[ItemNo::DYNAMITE]->effect_draw();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 50;
+                    effect_[i]->effect_texsize = { 32,32 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::item_end:
                 break;
 
@@ -255,30 +311,58 @@ void building::hit(Item* item, int current_item)
                     itemStatus = Attribute::wood;
                     break;
                 case ItemNo::CHAINSAW:
-                    item->Chainsaw();
-                    currentEffectNum = ItemNo::CHAINSAW;
-                    itemStatus = Attribute::wood;
-                    break;
+                    if (weather == Weather::thunder)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Chainsaw();
+                        currentEffectNum = ItemNo::CHAINSAW;
+                        itemStatus = Attribute::wood;
+                        break;
+                    }
                 case ItemNo::FIRE:
-                    item->Fire();
-                    currentEffectNum = ItemNo::FIRE;
-                    itemStatus = Attribute::wood;
-                    break;
+                    if (weather == Weather::rain)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Fire();
+                        currentEffectNum = ItemNo::FIRE;
+                        itemStatus = Attribute::wood;
+                        break;
+                    }
                 case ItemNo::HAMMER:
                     item->Hammer();
                     currentEffectNum = ItemNo::HAMMER;
                     itemStatus = Attribute::stone;
                     break;
                 case ItemNo::DRILL:
-                    item->Drill();
-                    currentEffectNum = ItemNo::DRILL;
-                    itemStatus = Attribute::stone;
-                    break;
+                    if (weather == Weather::thunder)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Drill();
+                        currentEffectNum = ItemNo::DRILL;
+                        itemStatus = Attribute::stone;
+                        break;
+                    }
                 case ItemNo::DYNAMITE:
-                    item->Dynamite();
-                    currentEffectNum = ItemNo::DYNAMITE;
-                    itemStatus = Attribute::stone;
-                    break;
+                    if (weather == Weather::rain)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Dynamite();
+                        currentEffectNum = ItemNo::DYNAMITE;
+                        itemStatus = Attribute::stone;
+                        break;
+                    }
                 case ItemNo::item_end:
                     break;
                 }
