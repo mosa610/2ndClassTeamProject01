@@ -131,22 +131,22 @@ void building::update()
             switch (i)
             {
             case ItemNo::AXE:
-                effect_[i]->effct_axe();
+                effect_[ItemNo::AXE]->effct_axe();
                 break;
             case ItemNo::CHAINSAW:
-                effect_[i]->effct_chainsaw();
+                effect_[ItemNo::CHAINSAW]->effct_chainsaw();
                 break;
             case ItemNo::FIRE:
-                effect_[i]->effct_fire();
+                effect_[ItemNo::FIRE]->effct_fire();
                 break;
             case ItemNo::HAMMER:
-                effect_[i]->effct_hammer();
+                effect_[ItemNo::HAMMER]->effct_hammer();
                 break;
             case ItemNo::DRILL:
-                effect_[i]->effct_drill();
+                effect_[ItemNo::DRILL]->effct_drill();
                 break;
             case ItemNo::DYNAMITE:
-                effect_[i]->effct_exprosion();
+                effect_[ItemNo::DYNAMITE]->effct_exprosion();
                 break;
             case ItemNo::item_end:
                 break;
@@ -183,39 +183,39 @@ void building::draw()
             switch (i)
             {
             case ItemNo::AXE:
-                effect_[i]->effectNum = 53;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::AXE]->effectNum = 53;
+                effect_[ItemNo::AXE]->effect_texsize = { 32,32 };
+                effect_[ItemNo::AXE]->effect_draw();
                 break;
             case ItemNo::CHAINSAW:
-                effect_[i]->effectNum = 54;
-                effect_[i]->effect_texsize = { 64,64 };
-                effect_[i]->effect_center = { 32,32 };
-                effect_[i]->effect_scale = { 4,4 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::CHAINSAW]->effectNum = 54;
+                effect_[ItemNo::CHAINSAW]->effect_texsize = { 64,64 };
+                effect_[ItemNo::CHAINSAW]->effect_center = { 32,32 };
+                effect_[ItemNo::CHAINSAW]->effect_scale = { 4,4 };
+                effect_[ItemNo::CHAINSAW]->effect_draw();
                 break;
             case ItemNo::FIRE:
-                effect_[i]->effectNum = 51;
-                effect_[i]->effect_center.y = 64;
-                effect_[i]->effect_texsize = { 32,64 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::FIRE]->effectNum = 51;
+                effect_[ItemNo::FIRE]->effect_center.y = 64;
+                effect_[ItemNo::FIRE]->effect_texsize = { 32,64 };
+                effect_[ItemNo::FIRE]->effect_draw();
                 break;
             case ItemNo::HAMMER:
-                effect_[i]->effectNum = 52;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::HAMMER]->effectNum = 52;
+                effect_[ItemNo::HAMMER]->effect_texsize = { 32,32 };
+                effect_[ItemNo::HAMMER]->effect_draw();
                 break;
             case ItemNo::DRILL:
-                effect_[i]->effectNum = 54;
-                effect_[i]->effect_texsize = { 64,64 };
-                effect_[i]->effect_center = { 32,32 };
-                effect_[i]->effect_scale = { 4,4 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::DRILL]->effectNum = 54;
+                effect_[ItemNo::DRILL]->effect_texsize = { 64,64 };
+                effect_[ItemNo::DRILL]->effect_center = { 32,32 };
+                effect_[ItemNo::DRILL]->effect_scale = { 4,4 };
+                effect_[ItemNo::DRILL]->effect_draw();
                 break;
             case ItemNo::DYNAMITE:
-                effect_[i]->effectNum = 50;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::DYNAMITE]->effectNum = 50;
+                effect_[ItemNo::DYNAMITE]->effect_texsize = { 32,32 };
+                effect_[ItemNo::DYNAMITE]->effect_draw();
                 break;
             case ItemNo::item_end:
                 break;

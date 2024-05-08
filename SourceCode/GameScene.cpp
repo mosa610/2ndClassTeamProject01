@@ -146,8 +146,6 @@ void GameScene::update()
             thunder_pos = 0;
         }*/
     }
-    if(timer_%60==0)
-    status_.addCurrentCost(1);
     if (timer_ % 60 == 0) {
         status_.addCurrentCost(1);
         if (plusHP != 0)
@@ -167,7 +165,7 @@ void GameScene::draw()
     GameLib::clear(0.2f, 0.2f, 1.0f);
     GameLib::texture::begin(0);
     GameLib::texture::draw(0, { 0,0 }, { 1,1 }, { back_ground[0].texSize_ }, { back_ground[0].maxTexSize_ }, { 0,0 }, 0);
-    GameLib::texture::end(0);    
+    GameLib::texture::end(0);
     for (int i = 0; i < currentBuildingNum-1; i++)
     {
         if (building_[i])
