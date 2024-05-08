@@ -172,7 +172,7 @@ void GameScene::draw()
 {
     GameLib::clear(0.2f, 0.2f, 1.0f);
     GameLib::texture::begin(0);
-    GameLib::texture::draw(0, { 0,0 }, { 1,1 }, { back_ground[0].texSize_ }, { back_ground[0].maxTexSize_ }, { 0,0 }, 0);
+    GameLib::texture::draw(0, { 0,0 }, { 1,1 }, { back_ground_1[0].texSize_ }, { back_ground_1[0].maxTexSize_ }, { 0,0 }, 0);
     GameLib::texture::end(0);
     for (int i = 0; i < currentBuildingNum-1; i++)
     {
