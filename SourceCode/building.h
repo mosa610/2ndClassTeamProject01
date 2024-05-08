@@ -4,7 +4,7 @@
 #include "item.h"
 #include "stage.h"
 
-void newEffect();
+void newEffect(int effectNum);
 
 class building : public status
 {

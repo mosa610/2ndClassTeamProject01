@@ -383,11 +383,15 @@ void building::hit(Item* item, int current_item)
 
                     plusHP = static_cast<int>(((distHP - HP) * (distHP / MAX_HP)) / 2);
 
+
                     effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
+
+
                     effect_[currentEffectNum]->effect_pos.x = item_pos.x;
                     effect_[currentEffectNum]->effect_pos.y = item_pos.y;
                     effct_anime = true;
                     effectanimeNum = i;
+
                     //}
                     //currentEffectNum++;
                     this->break_build = true;
@@ -399,7 +403,8 @@ void building::hit(Item* item, int current_item)
 }
 
 
-void newEffect()
+void newEffect(int effectNum)
 {
     effect_ = new Effect * [effectNum];
+
 }

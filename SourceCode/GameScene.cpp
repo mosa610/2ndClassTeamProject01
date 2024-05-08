@@ -48,7 +48,7 @@ void GameScene::init()
     GameLib::texture::load(ui[2].tex_num, ui[2].filename);
     GameLib::texture::load(ui[3].tex_num, ui[3].filename);
     GameLib::texture::load(0, back_ground[0].filename);
-    newEffect();
+    newEffect(7);
 }
 
 void GameScene::deinit()
@@ -154,8 +154,6 @@ void GameScene::update()
         weather == Weather::nornal;
     }
 
-    if(timer_%60==0)
-    status_.addCurrentCost(1);
     if (timer_ % 60 == 0) {
         status_.addCurrentCost(1);
         if (plusHP != 0)

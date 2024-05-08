@@ -8,6 +8,7 @@ class Effect
 public:
     int effectTimer = 0;
     int effectNum;
+    int coolTime = 0;
 
     VECTOR2 effect_pos = { 0,0 };
     VECTOR2 effect_scale = { 1,1 };
