@@ -1,7 +1,6 @@
 #pragma once
-#include <iostream>
-#include "../GameLib/game_lib.h"
 
+#include "Music.h"
 #include "list"
 
 using namespace GameLib;
@@ -12,7 +11,7 @@ public:
 	MusicManager()
 	{
 		// music::load‚ğs‚¤
-
+		
 	}
 	~MusicManager() {}
 
