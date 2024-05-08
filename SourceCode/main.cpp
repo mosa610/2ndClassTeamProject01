@@ -21,7 +21,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int)
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     //_CrtDumpMemoryLeaks();
     SceneManager sceneManager;
-    sceneManager.execute(GameScene::instance());
+    sceneManager.execute(TitleScene::instance());
 
     return 0;
 }

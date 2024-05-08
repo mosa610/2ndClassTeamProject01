@@ -12,7 +12,7 @@ int itemStatus;
 float distHP;
 
 int plusHP;
-
+extern int weather;
 
 building::building()
 {
@@ -131,23 +131,51 @@ void building::update()
             switch (i)
             {
             case ItemNo::AXE:
-                effect_[i]->effct_axe();
+                effect_[ItemNo::AXE]->effct_axe();
                 break;
             case ItemNo::CHAINSAW:
-                effect_[i]->effct_chainsaw();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_chainsaw();
+                    break;
+                }
             case ItemNo::FIRE:
-                effect_[i]->effct_fire();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_fire();
+                    break;
+                }
             case ItemNo::HAMMER:
-                effect_[i]->effct_hammer();
+                effect_[ItemNo::HAMMER]->effct_hammer();
                 break;
             case ItemNo::DRILL:
-                effect_[i]->effct_drill();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_drill();
+                    break;
+                }
             case ItemNo::DYNAMITE:
-                effect_[i]->effct_exprosion();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effct_exprosion();
+                    break;
+                }
             case ItemNo::item_end:
                 break;
             }
@@ -183,40 +211,68 @@ void building::draw()
             switch (i)
             {
             case ItemNo::AXE:
-                effect_[i]->effectNum = 53;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::AXE]->effectNum = 53;
+                effect_[ItemNo::AXE]->effect_texsize = { 32,32 };
+                effect_[ItemNo::AXE]->effect_draw();
                 break;
             case ItemNo::CHAINSAW:
-                effect_[i]->effectNum = 54;
-                effect_[i]->effect_texsize = { 64,64 };
-                effect_[i]->effect_center = { 32,32 };
-                effect_[i]->effect_scale = { 4,4 };
-                effect_[i]->effect_draw();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 54;
+                    effect_[i]->effect_texsize = { 64,64 };
+                    effect_[i]->effect_center = { 32,32 };
+                    effect_[i]->effect_scale = { 4,4 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::FIRE:
-                effect_[i]->effectNum = 51;
-                effect_[i]->effect_center.y = 64;
-                effect_[i]->effect_texsize = { 32,64 };
-                effect_[i]->effect_draw();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 51;
+                    effect_[i]->effect_center.y = 64;
+                    effect_[i]->effect_texsize = { 32,64 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::HAMMER:
-                effect_[i]->effectNum = 52;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
+                effect_[ItemNo::HAMMER]->effectNum = 52;
+                effect_[ItemNo::HAMMER]->effect_texsize = { 32,32 };
+                effect_[ItemNo::HAMMER]->effect_draw();
                 break;
             case ItemNo::DRILL:
-                effect_[i]->effectNum = 54;
-                effect_[i]->effect_texsize = { 64,64 };
-                effect_[i]->effect_center = { 32,32 };
-                effect_[i]->effect_scale = { 4,4 };
-                effect_[i]->effect_draw();
-                break;
+                if (weather == Weather::thunder)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 54;
+                    effect_[i]->effect_texsize = { 64,64 };
+                    effect_[i]->effect_center = { 32,32 };
+                    effect_[i]->effect_scale = { 4,4 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::DYNAMITE:
-                effect_[i]->effectNum = 50;
-                effect_[i]->effect_texsize = { 32,32 };
-                effect_[i]->effect_draw();
-                break;
+                if (weather == Weather::rain)
+                {
+                    break;
+                }
+                else
+                {
+                    effect_[i]->effectNum = 50;
+                    effect_[i]->effect_texsize = { 32,32 };
+                    effect_[i]->effect_draw();
+                    break;
+                }
             case ItemNo::item_end:
                 break;
 
@@ -255,30 +311,58 @@ void building::hit(Item* item, int current_item)
                     itemStatus = Attribute::wood;
                     break;
                 case ItemNo::CHAINSAW:
-                    item->Chainsaw();
-                    currentEffectNum = ItemNo::CHAINSAW;
-                    itemStatus = Attribute::wood;
-                    break;
+                    if (weather == Weather::thunder)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Chainsaw();
+                        currentEffectNum = ItemNo::CHAINSAW;
+                        itemStatus = Attribute::wood;
+                        break;
+                    }
                 case ItemNo::FIRE:
-                    item->Fire();
-                    currentEffectNum = ItemNo::FIRE;
-                    itemStatus = Attribute::wood;
-                    break;
+                    if (weather == Weather::rain)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Fire();
+                        currentEffectNum = ItemNo::FIRE;
+                        itemStatus = Attribute::wood;
+                        break;
+                    }
                 case ItemNo::HAMMER:
                     item->Hammer();
                     currentEffectNum = ItemNo::HAMMER;
                     itemStatus = Attribute::stone;
                     break;
                 case ItemNo::DRILL:
-                    item->Drill();
-                    currentEffectNum = ItemNo::DRILL;
-                    itemStatus = Attribute::stone;
-                    break;
+                    if (weather == Weather::thunder)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Drill();
+                        currentEffectNum = ItemNo::DRILL;
+                        itemStatus = Attribute::stone;
+                        break;
+                    }
                 case ItemNo::DYNAMITE:
-                    item->Dynamite();
-                    currentEffectNum = ItemNo::DYNAMITE;
-                    itemStatus = Attribute::stone;
-                    break;
+                    if (weather == Weather::rain)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        item->Dynamite();
+                        currentEffectNum = ItemNo::DYNAMITE;
+                        itemStatus = Attribute::stone;
+                        break;
+                    }
                 case ItemNo::item_end:
                     break;
                 }
@@ -299,11 +383,15 @@ void building::hit(Item* item, int current_item)
 
                     plusHP = static_cast<int>(((distHP - HP) * (distHP / MAX_HP)) / 2);
 
+
                     effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
+
+
                     effect_[currentEffectNum]->effect_pos.x = item_pos.x;
                     effect_[currentEffectNum]->effect_pos.y = item_pos.y;
                     effct_anime = true;
                     effectanimeNum = i;
+
                     //}
                     //currentEffectNum++;
                     this->break_build = true;
@@ -315,7 +403,8 @@ void building::hit(Item* item, int current_item)
 }
 
 
-void newEffect()
+void newEffect(int effectNum)
 {
     effect_ = new Effect * [effectNum];
+
 }

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "scene.h"
+#include "all.h"
+using namespace GameLib::input;
 
 class TutorialScene : public Scene
 {
@@ -16,16 +18,6 @@ public:
 private:
     TutorialScene() {}
     TutorialScene(const TutorialScene&) = delete;
+    VECTOR2 cursorPos;
 };
 
-class TutorialMotion
-{
-public:
-    TutorialMotion(VECTOR2 pos_, VECTOR2 scale_, VECTOR2 tex_pos_, VECTOR2 tex_size_);
-public:
-    VECTOR2 pos;
-    VECTOR2 scale;
-    VECTOR2 tex_pos;
-    VECTOR2 tex_size;
-    int timer;
-};

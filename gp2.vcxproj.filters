@@ -114,10 +114,7 @@
     <ClInclude Include="SourceCode\effect.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\Music.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceCode\MusicManager.h">
+    <ClInclude Include="SourceCode\tutorialScene.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -235,9 +232,6 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\effect.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceCode\MusicManager.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>

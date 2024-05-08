@@ -7,8 +7,6 @@
 #include <time.h>
 #include "effect.h"
 
-
-
 GameScene GameScene::instance_;
 
 int itemNum = 0;
@@ -28,7 +26,8 @@ float cloud_pos_x = -1920;
 float rain_pos = 0;
 float thunder_pos = 0;
 extern int plusHP;
-
+int weather;
+int weatherTimer = 0;
 
 void GameScene::init()
 {
@@ -48,8 +47,8 @@ void GameScene::init()
     GameLib::texture::load(ui[1].tex_num, ui[1].filename);
     GameLib::texture::load(ui[2].tex_num, ui[2].filename);
     GameLib::texture::load(ui[3].tex_num, ui[3].filename);
-    GameLib::texture::load(0, back_ground[0].filename);
-    newEffect();
+    GameLib::texture::load(0, back_ground_1[0].filename);
+    newEffect(7);
 }
 
 void GameScene::deinit()
@@ -124,31 +123,37 @@ void GameScene::update()
     {
         item_[i].update();
     }
-
+    weather = Weather::nornal;
     cloud_pos_x += addSpeed;
     
     if (cloud_pos_x == 0)
     {
         addSpeed = 0;
-        if (timer_ % 10 < 5)
-        {
-            rain_pos = 1920;
-        }
-        else
-        {
-            rain_pos = 0;
-        }
-        /*if (timer_ % 10 < 5)
-        {
-            thunder_pos = 1920;
-        }
-        else
-        {
-            thunder_pos = 0;
-        }*/
+        weather = Weather::thunder;
+        weatherTimer++;
     }
-    if(timer_%60==0)
-    status_.addCurrentCost(1);
+    if (timer_ % 10 < 5)
+    {
+        rain_pos = 1920;
+    }
+    else
+    {
+        rain_pos = 0;
+    }
+    if (timer_ % 10 < 5)
+    {
+        thunder_pos = 1920;
+    }
+    else
+    {
+        thunder_pos = 0;
+    }
+    if (weatherTimer == 600)
+    {
+        addSpeed = 4.0f;
+        weather == Weather::nornal;
+    }
+
     if (timer_ % 60 == 0) {
         status_.addCurrentCost(1);
         if (plusHP != 0)
@@ -168,7 +173,7 @@ void GameScene::draw()
     GameLib::clear(0.2f, 0.2f, 1.0f);
     GameLib::texture::begin(0);
     GameLib::texture::draw(0, { 0,0 }, { 1,1 }, { back_ground[0].texSize_ }, { back_ground[0].maxTexSize_ }, { 0,0 }, 0);
-    GameLib::texture::end(0);    
+    GameLib::texture::end(0);
     for (int i = 0; i < currentBuildingNum-1; i++)
     {
         if (building_[i])
@@ -180,14 +185,17 @@ void GameScene::draw()
     {
         item_[i].draw();
     }
-    if (cloud_pos_x == 0)
+    if (weather == Weather::rain)
     {
         GameLib::texture::begin(ui[2].tex_num);
-        GameLib::texture::draw(ui[2].tex_num, { 0,0 }, { 1,1 }, { rain_pos,0 }, { 1920,1080 }, { 0,0 }, 0);
+        GameLib::texture::draw(ui[2].tex_num, { cloud_pos_x,0 }, { 1,1 }, { rain_pos,0 }, { 1920,1080 }, { 0,0 }, 0);
         GameLib::texture::end(ui[2].tex_num);
-        /*GameLib::texture::begin(ui[3].tex_num);
+    }
+    if (weather == Weather::thunder)
+    {
+        GameLib::texture::begin(ui[3].tex_num);
         GameLib::texture::draw(ui[3].tex_num, { 0,0 }, { 1,1 }, { thunder_pos,0 }, { 1920,1080 }, { 0,0 }, 0);
-        GameLib::texture::end(ui[3].tex_num);*/
+        GameLib::texture::end(ui[3].tex_num);
     }
     GameLib::texture::begin(ui[0].tex_num);
     GameLib::texture::draw(ui[0].tex_num, { cloud_pos_x,0 }, { 1,1 }, { 0,0 }, { 1920,360 }, { 0,0 }, 0);

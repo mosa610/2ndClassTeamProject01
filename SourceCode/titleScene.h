@@ -1,6 +1,8 @@
 #pragma once
 
 #include "scene.h"
+#include "all.h"
+using namespace GameLib::input;
 
 class TitleScene : public Scene
 {
@@ -16,6 +18,7 @@ public:
 private:
     TitleScene() {}
     TitleScene(const TitleScene&) = delete;
+    VECTOR2 cursorPos;
 };
 
 class TitleMotion
