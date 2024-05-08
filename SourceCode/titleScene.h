@@ -16,6 +16,7 @@ public:
 private:
     TitleScene() {}
     TitleScene(const TitleScene&) = delete;
+    VECTOR2 cursorPos;
 };
 
 class TitleMotion

@@ -5,12 +5,15 @@ TitleScene TitleScene::instance_;
 int timer;
 int motion_timer;
 TitleMotion** motion;
-
+VECTOR2 play;
+VECTOR2 tutorial;
 void TitleScene::init()
 {
     timer = 0;
     GameLib::texture::load(texture_data[0].tex_num, texture_data[0].filename);
     motion = new TitleMotion*[5];
+    play = { 400,800 };
+    tutorial = { 1300,800 };
 
 }
 
@@ -22,12 +25,16 @@ void TitleScene::update()
 {
     if (motion_timer % 60 == 59&& motion_timer / 60 <5)
     {
-        motion[motion_timer / 60] = new TitleMotion({ 100,0 }, { 1,1 }, { 0,0 }, { texture_data[0].maxTexSize_ });
+        motion[motion_timer / 60+1] = new TitleMotion({ 100,0 }, { 1,1 }, { 0,0 }, { texture_data[0].maxTexSize_ });
     }
     GameLib::texture::load(1, back_ground[timer].filename);
     timer++;
     if (timer >= 60) timer = 0;
     motion_timer++;
+    cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
+       static_cast<float>(GameLib::input::getCursorPosY()) };
+
+
 }
 
 void TitleScene::draw()
@@ -36,7 +43,8 @@ void TitleScene::draw()
     GameLib::texture::begin(1);
     GameLib::texture::draw(1, { 0,0 }, { 1,1 }, { back_ground[timer].texSize_}, {back_ground[timer].maxTexSize_}, {0,0}, 0);
     GameLib::texture::end(1);
-
+    GameLib::primitive::rect({ play.x,play.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
+    GameLib::primitive::rect({ tutorial.x,tutorial.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
     reset();
 }
 

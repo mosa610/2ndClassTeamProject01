@@ -11,6 +11,7 @@ struct Texture_data
 };
 
 extern Texture_data texture_data[];
+extern Texture_data back_ground_1[];
 extern Texture_data back_ground[];
 extern Texture_data effect_data[];
 extern Texture_data ui[];

@@ -7,9 +7,11 @@ Texture_data texture_data[] = {
     {33,L"./Data/Images/white_house_ver01_fin.png",{-448,0},{448,384}}
 };
 
+Texture_data back_ground_1[] = {
+    {0,L"./Data/Images/back_sun.png",{0,0},{1920,1080}}
+};
 
 Texture_data back_ground[] = {
-    {0,L"./Data/Images/back_sun.png",{0,0},{1920,1080}},
     {1,L"./Data/Images/background/Bluegridfloor0001.png",{0,0},{1920,1080} },
     {1,L"./Data/Images/background/Bluegridfloor0002.png",{0,0},{1920,1080} },
     {1,L"./Data/Images/background/Bluegridfloor0003.png",{0,0},{1920,1080} },
