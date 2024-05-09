@@ -181,7 +181,7 @@ void GameScene::update()
     for (int i = 0; i < 4; i++)
     {
 
-        if (timer_ >= stageWeather[stageNumber][i].time * 60 && stageWeather[stageNumber][i].weather == true)
+        if (timer_ >= stageWeather[stageNumber][i].time * 60 && stageWeather[stageNumber][i].weather == true && stageWeather[stageNumber][i].time > 0)
         {
             DoWeather(i, stageWeather[stageNumber][i].tr);
         }

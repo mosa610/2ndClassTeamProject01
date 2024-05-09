@@ -114,9 +114,6 @@
     <ClInclude Include="SourceCode\effect.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\tutorialScene.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="SourceCode\Music.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -130,6 +127,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\GameOverScene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\tutorialScene.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -18,6 +18,7 @@ extern float hage_texpos_x;
 int plusHP;
 extern int weather;
 bool doEffect;
+SE se;
 
 building::building()
 {
@@ -56,9 +57,9 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     color_timer = 0;
     timer = 0;
     regenerate = regenerate_;
-    break_build = false;
-    break_timer = 0;
-    texture_transition = stage[stageNumber].texture_transition;
+    this->break_build = false;
+    this->break_timer = 0;
+    texture_transition = stage->texture_transition;
     effct_anime = false;
     effectanimeNum = 0;
     currentEffectNum = 0;

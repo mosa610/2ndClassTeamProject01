@@ -7,6 +7,7 @@ Texture_data texture_data[] = {
     {33,L"./Data/Images/white_house_ver01_fin.png",{-448,0},{448,384}},
     {34,L"./Data/Images/SCS_Building_03_Green_Nighttime_01.png",{-119,0},{119,383}},
     {35,L"./Data/Images/housebrickdoor.png",{-512,0},{512,430}},
+    {36,L"./Data/Images/SCS_Building_04_Daytime_01.png",{-48,0},{48,89}},
 };
 
 Texture_data back_ground_1[] = {

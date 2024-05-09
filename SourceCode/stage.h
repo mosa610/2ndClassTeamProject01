@@ -19,6 +19,6 @@ extern int stageNumber;
 
 extern Stage_script stage[][7];
 
-extern Stage_script stageWeather[][2];
+extern Stage_script stageWeather[][3];
 
 extern Stage_script stageTime[][1];

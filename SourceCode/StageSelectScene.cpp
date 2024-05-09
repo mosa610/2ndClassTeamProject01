@@ -13,10 +13,10 @@ void StageSelectScene::init()
     GameLib::texture::load(ui[5].tex_num, ui[5].filename);
     GameLib::texture::load(back_ground_1[2].tex_num, back_ground_1[2].filename);
 
-    stage01 = { 400,500 };
-    stage02 = { 1300,500 };
-    stage03 = { 400,800 };
-    stage04 = { 1300,800 };
+    stage01 = { 400 - 50,500 - 50 };
+    stage02 = { 1300 - 50,500 - 50 };
+    stage03 = { 400 - 50,800 - 50 };
+    stage04 = { 1300 - 50,800 - 50 };
 
     nextScene_ = nullptr;
 }
@@ -90,10 +90,14 @@ void StageSelectScene::draw()
     GameLib::texture::draw(back_ground_1[2].tex_num, { 0,0 }, { 1,1 }, { back_ground_1[2].texSize_ }, { back_ground_1[2].maxTexSize_ }, { 0,0 }, 0);
     GameLib::texture::end(back_ground_1[2].tex_num);
 
-    GameLib::primitive::rect({ stage01.x,stage01.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 0, 0.6f });
-    GameLib::primitive::rect({ stage02.x,stage02.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 0, 0.6f });
-    GameLib::primitive::rect({ stage03.x,stage03.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 0, 0.6f });
-    GameLib::primitive::rect({ stage04.x,stage04.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 0, 0.6f });
+    GameLib::primitive::rect({ stage01.x,stage01.y }, { 350, 200 }, { 0, 0 }, 0, { 0, 0, 0, 0.6f });
+    GameLib::text_out(4, "stage01", stage01.x + 175, stage01.y + 100, 2, 2, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    GameLib::primitive::rect({ stage02.x,stage02.y }, { 350, 200 }, { 0, 0 }, 0, { 0, 0, 0, 0.6f });
+    GameLib::text_out(4, "stage02", stage02.x + 175, stage02.y + 100, 2, 2, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    GameLib::primitive::rect({ stage03.x,stage03.y }, { 350, 200 }, { 0, 0 }, 0, { 0, 0, 0, 0.6f });
+    GameLib::text_out(4, "stage03", stage03.x + 175, stage03.y + 100, 2, 2, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    GameLib::primitive::rect({ stage04.x,stage04.y }, { 350, 200 }, { 0, 0 }, 0, { 0, 0, 0, 0.6f });
+    GameLib::text_out(4, "stage04", stage04.x + 175, stage04.y + 100, 2, 2, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
     GameLib::texture::begin(ui[5].tex_num);
     GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
     GameLib::texture::end(ui[5].tex_num);
