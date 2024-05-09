@@ -184,6 +184,7 @@
     <ClInclude Include="SourceCode\MusicManager.h" />
     <ClInclude Include="SourceCode\scene.h" />
     <ClInclude Include="SourceCode\stage.h" />
+    <ClInclude Include="SourceCode\StageSelectScene.h" />
     <ClInclude Include="SourceCode\status.h" />
     <ClInclude Include="SourceCode\Texture_data.h" />
     <ClInclude Include="SourceCode\titleScene.h" />
@@ -301,6 +302,7 @@
     <ClCompile Include="SourceCode\MusicManager.cpp" />
     <ClCompile Include="SourceCode\Scene.cpp" />
     <ClCompile Include="SourceCode\stage.cpp" />
+    <ClCompile Include="SourceCode\StageSelectScene.cpp" />
     <ClCompile Include="SourceCode\Texture_data.cpp" />
     <ClCompile Include="SourceCode\titleScene.cpp" />
     <ClCompile Include="SourceCode\tutorialScene.cpp" />

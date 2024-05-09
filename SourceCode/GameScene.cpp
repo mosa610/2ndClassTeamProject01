@@ -92,16 +92,16 @@ void GameScene::update()
             }
         }
     }
-    if (timer_ >= stage01[currentBuildingNum - 1].time * 60 && stage01[currentBuildingNum - 1].time >= 0)
+    if (timer_ >= stage[stage_num][currentBuildingNum - 1].time * 60 && stage[stage_num][currentBuildingNum - 1].time >= 0)
     {
 
-        building_[currentBuildingNum - 1] = new building(&stage01[currentBuildingNum - 1], stage01[currentBuildingNum - 1].position_x,
-            stage01[currentBuildingNum - 1].tex_num,
-            stage01[currentBuildingNum - 1].scale,
-            stage01[currentBuildingNum - 1].HP,
-            stage01[currentBuildingNum - 1].regenerate,
+        building_[currentBuildingNum - 1] = new building(&stage[stage_num][currentBuildingNum - 1], stage[stage_num][currentBuildingNum - 1].position_x,
+            stage[stage_num][currentBuildingNum - 1].tex_num,
+            stage[stage_num][currentBuildingNum - 1].scale,
+            stage[stage_num][currentBuildingNum - 1].HP,
+            stage[stage_num][currentBuildingNum - 1].regenerate,
             currentBuildingNum,
-            stage01[currentBuildingNum - 1].status);
+            stage[stage_num][currentBuildingNum - 1].status);
 
         currentBuildingNum++;
     }
@@ -205,6 +205,8 @@ void GameScene::draw()
     GameLib::texture::begin(ui[1].tex_num);
     GameLib::texture::draw(ui[1].tex_num, { SCREEN_W - 130,10 }, { 0.2f,0.2f }, { ui[0].texSize_ }, { ui[0].maxTexSize_ }, { 0,0 }, 0, { 0, 1, 0, UI_A });
     GameLib::texture::end(ui[1].tex_num);
+
+    GameLib::debug::setString("stage_num%d", stage_num);
 }
 
 void GameScene::reset()

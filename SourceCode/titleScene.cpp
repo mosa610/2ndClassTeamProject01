@@ -1,5 +1,6 @@
 #include "titleScene.h"
 #include "GameScene.h"
+#include "StageSelectScene.h"
 #include "tutorialScene.h"
 #include "Texture_data.h"
 #include "mouse.h"
@@ -44,7 +45,7 @@ void TitleScene::update()
             cursorPos.x < play.x + 350 &&
             cursorPos.y < play.y + 200)
         {
-            changeScene(GameScene::instance());
+            changeScene(StageSelectScene::instance());
         }
     }
     if (TRG(0) & GameLib::input::PAD_START)
