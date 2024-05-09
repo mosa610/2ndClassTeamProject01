@@ -11,15 +11,6 @@ Stage_script stage[4][7] = {
     },
 
     {
-        {0,200,30,2,100,true,false,0},
-        {0,400,31,0.5f,100,true,false,1},
-        {15,600,32,1,1500,false,true,1},
-        {30,1100,33,1,700,true,false,0},
-         {-1,0,0}
-
-    },
-
-    {
         {0,600,30,2,100,true,false,0},     //time, position_x, tex_num, scale, HP, regenerate, texture_transition, status, weather;
         {10,200,30,2,100,true,false,0},
         {20,800,31,0.5f,200,true,false,1},
