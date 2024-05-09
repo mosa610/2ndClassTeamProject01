@@ -37,12 +37,9 @@ Stage_script stage[4][7] = {
 
 };
 
-Stage_script stageWeather[4][1] = {
+Stage_script stageWeather[4][2] = {
     {
         {30,0,0,0,0,0,0,0,true}
-    },
-    {
-        {-1,0,0}
     },
     {
         {10,0,0,0,0,0,0,0,true},
