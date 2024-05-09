@@ -207,7 +207,7 @@ void GameScene::update()
 
     if (timer_ % 60 == 0)
     {
-        gameTimer += addTimer;
+        gameTimer++;
     }
     if (gameTimer >= 180)
     {
