@@ -306,6 +306,7 @@ void GameScene::reset()
 {
     timer_do_weather = 0;
     cloud_pos_x = -SCREEN_W;
+    weatherTimer = 0;
 }
 
 void DoWeather(int currentWeather)
