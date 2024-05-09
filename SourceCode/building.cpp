@@ -27,6 +27,9 @@ building::building()
     position.x = rand() % 1280;
     position.y = 1000;
     timer = 0;
+    hage_pos_x = 0;
+    hage_speed = 3.0f;
+    hage_scale_x = 2;
 }
 
 building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_, int build_num, int status)

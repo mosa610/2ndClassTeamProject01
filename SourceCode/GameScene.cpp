@@ -50,6 +50,18 @@ void GameScene::init()
     itemNum = 1;
     item_ = new Item[itemNum];
     effect = new Effect*[buildingNum];
+    UI_A = 0.4f;
+    addTimer = 1;
+    addSpeed = 4.0f;
+    cloud_pos_x = -1920;
+    rain_pos = 0;
+    thunder_pos = 0;
+    weather = Weather::nornal;
+    weatherTimer = 0;
+    hage_texpos_x = 64;
+    hage_texpos_y = 0;
+    coin_anime = 0;
+    coinTimer = 0;
     gameTimer = 0;
     status_.setCurrentCost(0);
     for (int i = 50; i < 55; i++)
