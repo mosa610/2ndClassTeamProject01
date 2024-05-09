@@ -12,6 +12,8 @@ void GameClearScene::init()
 
     retryPos = { 400,800 };
     stageSelectPos = { 1300,800 };
+
+    nextScene_ = nullptr;
 }
 
 void GameClearScene::deinit()

@@ -12,6 +12,8 @@ void GameOverScene::init()
 
     retryPos = { 400,800 };
     retirePos = { 1300,800 };
+
+    nextScene_ = nullptr;
 }
 
 void GameOverScene::deinit()

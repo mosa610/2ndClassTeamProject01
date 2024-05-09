@@ -10,13 +10,17 @@ void StageSelectScene::init()
 {
     stageNumber = -1;
     GameLib::texture::load(ui[5].tex_num, ui[5].filename);
+    GameLib::texture::load(back_ground_1[2].tex_num, back_ground_1[2].filename);
 
     stage01 = { 400,800 };
     stage02 = { 1300,800 };
+
+    nextScene_ = nullptr;
 }
 
 void StageSelectScene::deinit()
 {
+    GameLib::texture::release(back_ground_1[2].tex_num);
     GameLib::texture::release(ui[5].tex_num);
 }
 
@@ -51,6 +55,10 @@ void StageSelectScene::update()
 void StageSelectScene::draw()
 {
     GameLib::clear(1, 0, 1);
+
+    GameLib::texture::begin(back_ground_1[2].tex_num);
+    GameLib::texture::draw(back_ground_1[2].tex_num, { 0,0 }, { 1,1 }, { back_ground_1[2].texSize_ }, { back_ground_1[2].maxTexSize_ }, { 0,0 }, 0);
+    GameLib::texture::end(back_ground_1[2].tex_num);
 
     GameLib::primitive::rect({ stage01.x,stage01.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
     GameLib::primitive::rect({ stage02.x,stage02.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });

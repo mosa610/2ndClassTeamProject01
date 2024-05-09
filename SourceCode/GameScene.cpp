@@ -49,6 +49,7 @@ void GameScene::init()
     itemNum = 1;
     item_ = new Item[itemNum];
     effect = new Effect*[buildingNum];
+    gameTimer = 0;
     for (int i = 50; i < 55; i++)
     {
         GameLib::texture::load(i, effect_data[i - 50].filename);
@@ -63,6 +64,8 @@ void GameScene::init()
     GameLib::texture::load(ui[7].tex_num, ui[7].filename);
 
     newEffect(7);
+
+    nextScene_ = nullptr;
 }
 
 void GameScene::deinit()
@@ -206,7 +209,7 @@ void GameScene::update()
     {
         gameTimer += addTimer;
     }
-    if (gameTimer == 180)
+    if (gameTimer >= 180)
     {
         changeScene(GameOverScene::instance());
     }
