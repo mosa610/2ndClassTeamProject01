@@ -53,7 +53,9 @@ void StageSelectScene::update()
             cursorPos.y < stage02.y + 200)
         {
             stageNumber = 1;
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(GameScene::instance());
+            MusicManager::Instance().Stop(BGM::TITLE);
         }
     }
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)
@@ -77,7 +79,9 @@ void StageSelectScene::update()
             cursorPos.y < stage04.y + 200)
         {
             stageNumber = 3;
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(GameScene::instance());
+            MusicManager::Instance().Stop(BGM::TITLE);
         }
     }
 }
