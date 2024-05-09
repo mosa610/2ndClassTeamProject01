@@ -18,6 +18,8 @@ public:
 
     void hit(Item* item, int current_item);
 
+    void hageVSBuild(float hagepos, float radius);
+
     std::list<building> Building;
 private:
     VECTOR2 position;
@@ -39,5 +41,6 @@ private:
     bool effct_anime;
     int effectanimeNum;
     int buildStatus;
+    bool hageHit;
     Attribute attribute;
 };

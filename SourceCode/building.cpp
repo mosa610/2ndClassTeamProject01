@@ -16,6 +16,7 @@ float hage_scale_x = 2;
 extern float hage_texpos_x;
 int plusHP;
 extern int weather;
+bool doEffect;
 
 building::building()
 {
@@ -53,7 +54,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     regenerate = regenerate_;
     break_build = false;
     break_timer = 0;
-    texture_transition = stage->texture_transition;
+    texture_transition = stage[stageNumber].texture_transition;
     effct_anime = false;
     effectanimeNum = 0;
     currentEffectNum = 0;
@@ -75,6 +76,7 @@ building::~building()
 
 void building::update()
 {
+    hageHit = false;
     texSize.y = -maxTexSize.y * (HP / MAX_HP);
     if (timer % 12 == 0 && break_build == false)
     {
@@ -285,6 +287,7 @@ void building::draw()
         }
     }
 
+
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
     GameLib::debug::setString("cost:%d", current_cost);
     //GameLib::primitive::circle({ hage_pos }, 200, { 1,1 }, 0, { 1,0,0,0.5f });
@@ -311,6 +314,7 @@ void building::hit(Item* item, int current_item)
         {
             if (TRG_RELEASE(0) & GameLib::input::PAD_START)
             {
+                doEffect = true;
                 switch (i)
                 {
                 case ItemNo::AXE:
@@ -321,6 +325,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::CHAINSAW:
                     if (weather == Weather::thunder)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -333,6 +338,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::FIRE:
                     if (weather == Weather::rain)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -350,6 +356,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::DRILL:
                     if (weather == Weather::thunder)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -362,6 +369,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::DYNAMITE:
                     if (weather == Weather::rain)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -392,13 +400,16 @@ void building::hit(Item* item, int current_item)
                     plusHP = static_cast<int>(((distHP - HP) * (distHP / MAX_HP)) / 2);
 
 
-                    effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
+                    if (doEffect)
+                    {
+                        effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
+                        hageHit = true;
 
-
-                    effect_[currentEffectNum]->effect_pos.x = item_pos.x;
-                    effect_[currentEffectNum]->effect_pos.y = item_pos.y;
-                    effct_anime = true;
-                    effectanimeNum = i;
+                        effect_[currentEffectNum]->effect_pos.x = item_pos.x;
+                        effect_[currentEffectNum]->effect_pos.y = item_pos.y;
+                        effct_anime = true;
+                        effectanimeNum = i;
+                    }
 
                     //}
                     //currentEffectNum++;
@@ -407,6 +418,18 @@ void building::hit(Item* item, int current_item)
             }
             if (HP < 0) HP = 0;
         }
+    }
+}
+
+void building::hageVSBuild(float hagepos, float radius)
+{
+    DirectX::XMFLOAT2 build_pos;
+    build_pos = { position.x ,position.y };
+    if (build_pos.x > hagepos - radius &&
+        build_pos.x < hagepos + radius)
+    {
+        if(hageHit)
+        plusHP = -50;
     }
 }
 

@@ -126,7 +126,10 @@
     <ClInclude Include="SourceCode\StageSelectScene.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameoverScene.h">
+    <ClInclude Include="SourceCode\GameClearScene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameOverScene.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -253,9 +256,6 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\StageSelectScene.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceCode\GameoverScene.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
