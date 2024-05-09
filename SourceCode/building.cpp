@@ -76,6 +76,7 @@ building::~building()
 
 void building::update()
 {
+    hageHit = false;
     texSize.y = -maxTexSize.y * (HP / MAX_HP);
     if (timer % 12 == 0 && break_build == false)
     {
@@ -286,6 +287,7 @@ void building::draw()
         }
     }
 
+
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
     GameLib::debug::setString("cost:%d", current_cost);
     //GameLib::primitive::circle({ hage_pos }, 200, { 1,1 }, 0, { 1,0,0,0.5f });
@@ -401,7 +403,7 @@ void building::hit(Item* item, int current_item)
                     if (doEffect)
                     {
                         effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
-
+                        hageHit = true;
 
                         effect_[currentEffectNum]->effect_pos.x = item_pos.x;
                         effect_[currentEffectNum]->effect_pos.y = item_pos.y;
@@ -416,6 +418,18 @@ void building::hit(Item* item, int current_item)
             }
             if (HP < 0) HP = 0;
         }
+    }
+}
+
+void building::hageVSBuild(float hagepos, float radius)
+{
+    DirectX::XMFLOAT2 build_pos;
+    build_pos = { position.x ,position.y };
+    if (build_pos.x > hagepos - radius &&
+        build_pos.x < hagepos + radius)
+    {
+        if(hageHit)
+        plusHP = -50;
     }
 }
 
