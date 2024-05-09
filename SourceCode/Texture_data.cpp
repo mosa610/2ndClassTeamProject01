@@ -90,5 +90,6 @@ Texture_data ui[] =
     {9,L"./Data/Images/Asset43.png",{0,0},{512,396}},
     {7,L"./Data/Images/back_rain.png",{0,0},{3840,1080}},
     {6,L"./Data/Images/back_thunder.png",{0,0},{3840,1080}},
-    {5,L"./Data/Images/hage_ver02.png",{0,0},{128,128}}
+    {5,L"./Data/Images/hage_ver02.png",{0,0},{128,128}},
+    {4,L"./Data/Images/cursor.png",{0,0},{32,32}},
 };
