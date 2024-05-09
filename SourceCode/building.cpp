@@ -286,7 +286,8 @@ void building::draw()
             }
         }
     }
-
+    
+    //GameLib::text_out()
 
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
    

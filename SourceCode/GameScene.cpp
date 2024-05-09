@@ -36,6 +36,7 @@ float hage_texpos_y = 0;
 float coin_anime = 0;
 int coinTimer = 0;
 int gameTimer = 0;
+std::string cost;
 
 void GameScene::init()
 {
@@ -272,7 +273,8 @@ void GameScene::draw()
     GameLib::texture::begin(ui[6].tex_num);
     GameLib::texture::draw(ui[6].tex_num, { 80,80 }, { 7,7 }, { coin_anime,0 }, { 16,16 }, { 8,8 });
     GameLib::texture::end(ui[6].tex_num);
-    
+    cost = std::to_string(status_.getCost());
+    GameLib::text_out(1, cost, 150, 40, 3, 3, 1, 1, 1, 1);
     GameLib::debug::setString("stage_num%d", stageNumber);
 
 }
