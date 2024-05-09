@@ -243,7 +243,7 @@ void GameScene::draw()
     GameLib::debug::setString("stage_num%d", stageNumber);
 
     b = std::to_string(a);
-    GameLib::text_out(1, b+":", 0, 0, 1, 1);
+    GameLib::text_out(1, b, 0, 0, 1, 1);
 }
 
 void GameScene::reset()
