@@ -210,6 +210,7 @@ void GameScene::update()
     {
         changeScene(GameOverScene::instance());
     }
+
     if (acceleration == true && timer_ % 2 != 0)
         timer_++;
     else
