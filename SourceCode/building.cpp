@@ -3,6 +3,7 @@
 #include "stage.h"
 #include "Texture_data.h"
 #include "effect.h"
+#include "MusicManager.h"
 
 int hp;
 Effect** effect_;
@@ -144,6 +145,7 @@ void building::update()
             switch (i)
             {
             case ItemNo::AXE:
+                MusicManager::Instance().STATE_play(SE::AX);
                 effect_[ItemNo::AXE]->effct_axe();
                 break;
             case ItemNo::CHAINSAW:
@@ -153,6 +155,7 @@ void building::update()
                 }
                 else
                 {
+                    MusicManager::Instance().STATE_play(SE::CHAINSOW);
                     effect_[i]->effct_chainsaw();
                     break;
                 }
@@ -163,10 +166,12 @@ void building::update()
                 }
                 else
                 {
+                    MusicManager::Instance().STATE_play(SE::FIRER);
                     effect_[i]->effct_fire();
                     break;
                 }
             case ItemNo::HAMMER:
+                MusicManager::Instance().STATE_play(SE::HUMMER);
                 effect_[ItemNo::HAMMER]->effct_hammer();
                 break;
             case ItemNo::DRILL:
@@ -176,6 +181,7 @@ void building::update()
                 }
                 else
                 {
+                    MusicManager::Instance().STATE_play(SE::DRIL);
                     effect_[i]->effct_drill();
                     break;
                 }
@@ -186,6 +192,7 @@ void building::update()
                 }
                 else
                 {
+                    MusicManager::Instance().STATE_play(SE::EXPLOSION);
                     effect_[i]->effct_exprosion();
                     break;
                 }
@@ -203,7 +210,10 @@ void building::update()
                 }
             }
         }
+        MusicManager::Instance().STATE_play(SE::COLLAPSE);
     }
+    
+
     if (addTimer > 1 && timer % 2 != 0)
         timer++;
     else
@@ -320,7 +330,7 @@ void building::hit(Item* item, int current_item)
             build_pos.x + build_width_height.x >item_pos.x &&
             build_pos.y + build_width_height.y >item_pos.y)
         {
-            if (TRG_RELEASE(0) & GameLib::input::PAD_START)
+            if (TRG_RELEASE(0) & GameLib::input::PAD_START&&HP>0)
             {
                 doEffect = true;
                 switch (i)
