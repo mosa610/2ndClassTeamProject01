@@ -131,7 +131,7 @@ void GameScene::update()
     }
     weather = Weather::nornal;
     cloud_pos_x += addSpeed;
-    
+
     if (cloud_pos_x == 0)
     {
         addSpeed = 0;

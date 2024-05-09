@@ -1,5 +1,7 @@
 #include "stage.h"
 
+int stageNumber;
+
 Stage_script stage[2][7] = {
     {
         {0,600,30,2,100,true,false,0},     //time,position_x,tex_num,scale,HP,regenerate, texture_transition, status, weather;
