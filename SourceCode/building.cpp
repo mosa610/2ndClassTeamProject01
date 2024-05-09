@@ -61,6 +61,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     effectNum = 7;
     buildStatus = status;
     GameLib::texture::load(ui[4].tex_num, ui[4].filename);
+    hageHit = false;
     //effect_ = new Effect * [effectNum];
 }
 
