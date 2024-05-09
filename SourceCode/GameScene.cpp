@@ -161,6 +161,10 @@ void GameScene::update()
     {
         if (building_[i])
         {
+            if (i == 3)
+            {
+
+            }
             building_[i]->update();
             if (building_[i]->game_over == true)
             {
