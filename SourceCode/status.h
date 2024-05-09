@@ -7,6 +7,7 @@ protected:
     static int current_cost;
 public:
     void addCurrentCost(int cost_) { current_cost += cost_; }
+    int getCost() { return current_cost; }
 };
 
 enum Attribute

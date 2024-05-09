@@ -36,6 +36,8 @@ float hage_texpos_y = 0;
 float coin_anime = 0;
 int coinTimer = 0;
 int gameTimer = 0;
+std::string gametimer;
+std::string cost;
 
 void GameScene::init()
 {
@@ -200,11 +202,14 @@ void GameScene::update()
     coinTimer++;
     coin_anime = 16 * (coinTimer / 4);
 
-    /*gameTimer += addTimer;
-    if (gameTimer % 60 >= 180)
+    if (timer_ % 60 == 0)
     {
-        changeScene(GameoverScene::instance());
-    }*/
+        gameTimer += addTimer;
+    }
+    if (gameTimer == 180)
+    {
+        changeScene(GameOverScene::instance());
+    }
     if (acceleration == true && timer_ % 2 != 0)
         timer_++;
     else
@@ -272,8 +277,13 @@ void GameScene::draw()
     GameLib::texture::begin(ui[6].tex_num);
     GameLib::texture::draw(ui[6].tex_num, { 80,80 }, { 7,7 }, { coin_anime,0 }, { 16,16 }, { 8,8 });
     GameLib::texture::end(ui[6].tex_num);
-    
+    cost = std::to_string(status_.getCost());
+    GameLib::text_out(1, cost, 150, 40, 3, 3, 1, 1, 1, 1);
+
+    gametimer = std::to_string(gameTimer);
+    GameLib::text_out(1, gametimer, 900, 40, 3, 3, 1, 1, 1, 1);
     GameLib::debug::setString("stage_num%d", stageNumber);
+
 }
 
 void GameScene::reset()

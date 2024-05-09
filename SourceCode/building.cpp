@@ -61,6 +61,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     effectNum = 7;
     buildStatus = status;
     GameLib::texture::load(ui[4].tex_num, ui[4].filename);
+    hageHit = false;
     //effect_ = new Effect * [effectNum];
 }
 
@@ -286,9 +287,11 @@ void building::draw()
             }
         }
     }
-
+    
+    //GameLib::text_out()
 
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
+   
     GameLib::debug::setString("cost:%d", current_cost);
     //GameLib::primitive::circle({ hage_pos }, 200, { 1,1 }, 0, { 1,0,0,0.5f });
     /*GameLib::texture::begin(ui[4].tex_num);

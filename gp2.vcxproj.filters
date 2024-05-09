@@ -258,5 +258,11 @@
     <ClCompile Include="SourceCode\StageSelectScene.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="SourceCode\GameClearScene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameOverScene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
