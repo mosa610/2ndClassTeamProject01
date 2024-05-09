@@ -27,6 +27,9 @@ building::building()
     position.x = rand() % 1280;
     position.y = 1000;
     timer = 0;
+    hage_pos_x = 0;
+    hage_speed = 3.0f;
+    hage_scale_x = 2;
 }
 
 building::building(Stage_script* stage, float position_x, int tex_num,float scale_,float hp, bool regenerate_, int build_num, int status)
@@ -292,7 +295,7 @@ void building::draw()
 
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
    
-    GameLib::debug::setString("cost:%d", current_cost);
+    //GameLib::debug::setString("cost:%d", current_cost);
     //GameLib::primitive::circle({ hage_pos }, 200, { 1,1 }, 0, { 1,0,0,0.5f });
     /*GameLib::texture::begin(ui[4].tex_num);
     GameLib::texture::draw(ui[4].tex_num, { hage_pos_x,690 }, { -hage_scale_x,4 }, { 0,0 }, { 32,32 }, { 16,16 }, 0, { 1,1,1,1 });
