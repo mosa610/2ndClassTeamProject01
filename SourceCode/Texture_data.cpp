@@ -94,5 +94,5 @@ Texture_data ui[] =
     {5,L"./Data/Images/hage_ver02.png",{0,0},{128,128}},
     {4,L"./Data/Images/cursor.png",{0,0},{32,32}},
     {3,L"./Data/Images/coin.png",{0,0},{240,16}},
-    {50,L"./Data/Images/ban.png",{0,0},{64,64}},
+    {60,L"./Data/Images/ban.png",{0,0},{64,64}},
 };
