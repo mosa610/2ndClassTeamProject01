@@ -288,7 +288,7 @@ void GameScene::draw()
 
     gametimer = std::to_string(gameTimer);
     GameLib::text_out(1, gametimer, 900, 40, 3, 3, 1, 1, 1, 1);
-    GameLib::debug::setString("stage_num%d", stageNumber);
+    //GameLib::debug::setString("stage_num%d", stageNumber);
 
 }
 
