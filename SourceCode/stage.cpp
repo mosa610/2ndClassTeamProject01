@@ -41,3 +41,15 @@ Stage_script stageWeather[3][1] = {
         {-1,0,0}
     },
 };
+
+Stage_script stageTime[3][1] = {
+    {
+        {180,0,0}
+    },
+    {
+        {180,0,0},
+    },
+    {
+        {180,0,0}
+    },
+};
