@@ -42,7 +42,7 @@ int timer_do_weather = 0;
 std::string gametimer;
 std::string cost;
 
-void DoWeather();
+void DoWeather(int currentWeather, Weather tr);
 
 void GameScene::init()
 {
@@ -168,8 +168,8 @@ void GameScene::update()
             building_[i]->update();
             if (building_[i]->game_over == true)
             {
-                changeScene(GameOverScene::instance());
-                MusicManager::Instance().Stop(BGM::GAME);
+                /*changeScene(GameOverScene::instance());
+                MusicManager::Instance().Stop(BGM::GAME);*/
             }
         }
     }
@@ -178,9 +178,17 @@ void GameScene::update()
         item_[i].update();
     }
     weather = Weather::nornal;
-    if (timer_ >= stageWeather[stageNumber][0].time * 60 && stageWeather[stageNumber][0].weather == true)
+    for (int i = 0; i < 4; i++)
     {
-        DoWeather();
+
+        if (timer_ >= stageWeather[stageNumber][i].time * 60 && stageWeather[stageNumber][i].weather == true)
+        {
+            DoWeather(i, stageWeather[stageNumber][i].tr);
+        }
+        if (stageWeather[stageNumber][i].weather == true)
+        {
+            break;
+        }
     }
 
 
@@ -296,16 +304,18 @@ void GameScene::draw()
 
 void GameScene::reset()
 {
-
+    timer_do_weather = 0;
+    cloud_pos_x = -SCREEN_W;
+    weatherTimer = 0;
 }
 
-void DoWeather()
+void DoWeather(int currentWeather,Weather tr)
 {
     cloud_pos_x += addSpeed;
     if (cloud_pos_x == 0)
     {
         addSpeed = 0;
-        weather = Weather::rain;
+        weather = tr;
 
         weatherTimer++;
     }
@@ -331,6 +341,11 @@ void DoWeather()
     {
         addSpeed = 4.0f;
         weather == Weather::nornal;
+    }
+    if (cloud_pos_x > SCREEN_W * 2)
+    {
+        stageWeather[stageNumber][currentWeather].weather = false;
+        GameScene::instance()->reset();
     }
     timer_do_weather++;
 }

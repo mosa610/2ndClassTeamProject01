@@ -62,13 +62,16 @@ void GameClearScene::draw()
     GameLib::texture::draw(back_ground_1[4].tex_num, { 0,0 }, { 1,1 }, { back_ground_1[4].texSize_ }, { back_ground_1[4].maxTexSize_ }, { 0,0 }, 0);
     GameLib::texture::end(back_ground_1[4].tex_num);
 
-    GameLib::primitive::rect({ retryPos.x,retryPos.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
-    GameLib::primitive::rect({ stageSelectPos.x,stageSelectPos.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });
+    GameLib::primitive::rect({ retryPos.x,retryPos.y }, { 350, 200 }, { 0,0 }, 0, { 1, 1, 1, 0.6f });
+    GameLib::text_out(4, "Retry", retryPos.x + 175, retryPos.y + 100, 3, 3, 0, 0, 0, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    GameLib::primitive::rect({ stageSelectPos.x,stageSelectPos.y }, { 350, 200 }, { 0,0 }, 0, { 1, 1, 1, 0.6f });
+    GameLib::text_out(4, "stage", stageSelectPos.x + 175, stageSelectPos.y + 60, 3, 3, 0, 0, 0, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    GameLib::text_out(4, "select", stageSelectPos.x + 175, stageSelectPos.y + 140, 3, 3, 0, 0, 0, 1, GameLib::TEXT_ALIGN::MIDDLE);
     GameLib::texture::begin(ui[5].tex_num);
     GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
     GameLib::texture::end(ui[5].tex_num);
 }
-    
+
 
 void GameClearScene::reset()
 {

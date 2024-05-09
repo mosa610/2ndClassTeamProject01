@@ -4,12 +4,10 @@ int stageNumber;
 
 Stage_script stage[4][7] = {
     {
-        {0,200,30,2,100,true,false,0},
-        {0,400,31,0.5f,100,true,false,1},
-        {15,600,32,1,1500,false,true,1},
-        {30,1100,33,1,700,true,false,0},
-         {-1,0,0}
-
+        {0,300,31,0.5f,200,true,false,1},
+        {20,700,31,0.5f,200,true,false,1},
+        {30,1100,30,2,100,true,false,0},
+        {-1,0,0}
     },
 
     {
@@ -39,24 +37,21 @@ Stage_script stage[4][7] = {
 
 };
 
-Stage_script stageWeather[4][1] = {
+Stage_script stageWeather[4][2] = {
     {
-        {-1,0,0}
+        {30,0,0,0,0,0,0,0,true,Weather::rain}
     },
     {
-        {60,0,0,0,0,0,0,0,true}
+        {10,0,0,0,0,0,0,0,true,Weather::thunder},
     },
     {
-        {-1,0,0}
-    },
-    {
-        {60,0,0,0,0,0,0,0,true}
+        {60,0,0,0,0,0,0,0,true,Weather::rain}
     }
 };
 
 Stage_script stageTime[4][1] = {
     {
-        {180,0,0}
+        {60,0,0},
     },
     {
         {120,0,0},
