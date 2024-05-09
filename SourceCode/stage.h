@@ -11,9 +11,11 @@ struct Stage_script
     bool regenerate;
     bool texture_transition;
     int status;
-    int weather;
+    bool weather = false;
 };
 // ƒOƒ[ƒoƒ‹‚É‚µ‚Ä‚²‚ß‚ñ
 extern int stageNumber;
 
 extern Stage_script stage[][7];
+
+extern Stage_script stageWeather[][1];

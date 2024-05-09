@@ -37,8 +37,11 @@ float hage_texpos_y = 0;
 float coin_anime = 0;
 int coinTimer = 0;
 int gameTimer = 0;
+int timer_do_weather = 0;
 std::string gametimer;
 std::string cost;
+
+void DoWeather();
 
 void GameScene::init()
 {
@@ -51,6 +54,7 @@ void GameScene::init()
     item_ = new Item[itemNum];
     effect = new Effect*[buildingNum];
     gameTimer = 0;
+    timer_do_weather = 0;
     status_.setCurrentCost(0);
     for (int i = 50; i < 55; i++)
     {
@@ -150,38 +154,11 @@ void GameScene::update()
         item_[i].update();
     }
     weather = Weather::nornal;
-    cloud_pos_x += addSpeed;
+    if (timer_ >= stageWeather[stageNumber][0].time * 60 && stageWeather[stageNumber][0].weather == true)
+    {
+        DoWeather();
+    }
 
-    if (cloud_pos_x == 0)
-    {
-        addSpeed = 0;
-        weather = Weather::rain;
-
-        weatherTimer++;
-    }
-    if (timer_ % 10 < 5)
-    {
-        rain_pos = 1920;
-        hage_texpos_x = 64;
-    }
-    else
-    {
-        rain_pos = 0;
-        hage_texpos_x = 0;
-    }
-    if (timer_ % 10 < 5)
-    {
-        thunder_pos = 1920;
-    }
-    else
-    {
-        thunder_pos = 0;
-    }
-    if (weatherTimer == 1200)
-    {
-        addSpeed = 4.0f;
-        weather == Weather::nornal;
-    }
 
     if (timer_ % 60 == 0) {
         status_.addCurrentCost(1);
@@ -295,4 +272,40 @@ void GameScene::draw()
 void GameScene::reset()
 {
 
+}
+
+void DoWeather()
+{
+    cloud_pos_x += addSpeed;
+    if (cloud_pos_x == 0)
+    {
+        addSpeed = 0;
+        weather = Weather::rain;
+
+        weatherTimer++;
+    }
+    if (timer_do_weather % 10 < 5)
+    {
+        rain_pos = 1920;
+        hage_texpos_x = 64;
+    }
+    else
+    {
+        rain_pos = 0;
+        hage_texpos_x = 0;
+    }
+    if (timer_do_weather % 10 < 5)
+    {
+        thunder_pos = 1920;
+    }
+    else
+    {
+        thunder_pos = 0;
+    }
+    if (weatherTimer == 1200)
+    {
+        addSpeed = 4.0f;
+        weather == Weather::nornal;
+    }
+    timer_do_weather++;
 }
