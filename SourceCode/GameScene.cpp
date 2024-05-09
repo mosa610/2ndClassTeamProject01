@@ -170,6 +170,9 @@ void GameScene::update()
             {
                 changeScene(GameOverScene::instance());
                 MusicManager::Instance().Stop(BGM::GAME);
+                /*changeScene(GameOverScene::instance());
+                MusicManager::Instance().Stop(BGM::GAME);*/
+                MusicManager::Instance().Stop(SE::ALARM);
             }
         }
     }
@@ -224,6 +227,7 @@ void GameScene::update()
     {
         changeScene(GameClearScene::instance());
         MusicManager::Instance().Stop(BGM::GAME);
+        MusicManager::Instance().Stop(SE::ALARM);
     }
 
     if (acceleration == true && timer_ % 2 != 0)
