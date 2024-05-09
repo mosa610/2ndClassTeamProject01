@@ -1,5 +1,6 @@
 #include "GameScene.h"
-#include "GameoverScene.h"
+#include "GameOverScene.h"
+#include "GameClearScene.h"
 #include "mouse.h"
 #include "status.h"
 #include "building.h"
@@ -212,7 +213,7 @@ void GameScene::update()
     }
     if (gameTimer >= 180)
     {
-        changeScene(GameOverScene::instance());
+        changeScene(GameClearScene::instance());
     }
 
     if (acceleration == true && timer_ % 2 != 0)

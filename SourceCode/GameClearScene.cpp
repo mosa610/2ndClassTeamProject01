@@ -9,6 +9,7 @@ GameClearScene GameClearScene::instance_;
 void GameClearScene::init()
 {
     GameLib::texture::load(ui[5].tex_num, ui[5].filename);
+    GameLib::texture::load(back_ground_1[4].tex_num, back_ground_1[4].filename);
 
     retryPos = { 400,800 };
     stageSelectPos = { 1300,800 };
@@ -51,12 +52,17 @@ void GameClearScene::draw()
 {
     GameLib::clear(0, 0, 1);
 
+    GameLib::texture::begin(back_ground_1[4].tex_num);
+    GameLib::texture::draw(back_ground_1[4].tex_num, { 0,0 }, { 1,1 }, { back_ground_1[4].texSize_ }, { back_ground_1[4].maxTexSize_ }, { 0,0 }, 0);
+    GameLib::texture::end(back_ground_1[4].tex_num);
+
     GameLib::primitive::rect({ retryPos.x,retryPos.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
     GameLib::primitive::rect({ stageSelectPos.x,stageSelectPos.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });
     GameLib::texture::begin(ui[5].tex_num);
     GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
     GameLib::texture::end(ui[5].tex_num);
 }
+    
 
 void GameClearScene::reset()
 {
