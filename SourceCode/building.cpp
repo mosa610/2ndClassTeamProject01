@@ -53,7 +53,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     regenerate = regenerate_;
     break_build = false;
     break_timer = 0;
-    texture_transition = stage->texture_transition;
+    texture_transition = stage[stageNumber].texture_transition;
     effct_anime = false;
     effectanimeNum = 0;
     currentEffectNum = 0;

@@ -18,6 +18,8 @@ public:
 
     void hit(Item* item, int current_item);
 
+
+
     std::list<building> Building;
 private:
     VECTOR2 position;
