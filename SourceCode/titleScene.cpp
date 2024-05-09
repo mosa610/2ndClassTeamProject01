@@ -23,7 +23,7 @@ void TitleScene::init()
     //motion = new TitleMotion*[5];
     play = { 400-50,800-50 };
     tutorial = { 1300-50,800-50 };
-
+    nextScene_ = nullptr;
 }
 
 void TitleScene::deinit()

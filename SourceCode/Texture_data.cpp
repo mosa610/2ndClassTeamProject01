@@ -13,6 +13,9 @@ Texture_data back_ground_1[] = {
     {71,L"./Data/Images/stageSelect.png",{0,0},{1920,1080}},
     {72,L"./Data/Images/GameOver.png",{0,0},{1920,1080}},
     {73,L"./Data/Images/GameClear.png",{0,0},{1920,1080}},
+    {74,L"./Data/Images/tutorial2.png",{0,0},{1920,1080}},
+    {75,L"./Data/Images/tutorial3.png",{0,0},{1920,1080}},
+    {76,L"./Data/Images/tutorial4.png",{0,0},{1920,1080}},
 };
 
 Texture_data back_ground[] = {
