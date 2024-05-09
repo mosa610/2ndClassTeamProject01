@@ -5,7 +5,7 @@ int stageNumber;
 Stage_script stage[4][7] = {
     {
         {0,300,31,0.5f,200,true,false,1},
-        {20,700,31,0.5f,200,true,false,1},
+        {20,700,35,0.5f,200,true,false,1},
         {30,1100,30,2,100,true,false,0},
         {-1,0,0}
     },

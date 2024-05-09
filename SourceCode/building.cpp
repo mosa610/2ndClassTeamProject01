@@ -124,7 +124,7 @@ void building::update()
     }
     if (HP/MAX_HP>0.8f)
     {
-
+        MusicManager::Instance().STATE_play(SE::ALARM, true);
         color.y -= sinf(color_timer) * 0.5f;
         color.z -= sinf(color_timer) * 0.5f;
         color.y < 0 ? color.y = 0 : color.y>1 ? color.y = 1 : color.y;
@@ -331,7 +331,7 @@ void building::hit(Item* item, int current_item)
             build_pos.x + build_width_height.x >item_pos.x &&
             build_pos.y + build_width_height.y >item_pos.y)
         {
-            if (TRG_RELEASE(0) & GameLib::input::PAD_START&&HP>0)
+            if (TRG_RELEASE(0) & GameLib::input::PAD_START && HP > 0)
             {
                 doEffect = true;
                 switch (i)
@@ -434,6 +434,7 @@ void building::hit(Item* item, int current_item)
                     //currentEffectNum++;
                     this->break_build = true;
                 }
+                MusicManager::Instance().Stop(SE::ALARM);
             }
             if (HP < 0) HP = 0;
         }
