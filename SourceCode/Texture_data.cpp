@@ -10,6 +10,7 @@ Texture_data texture_data[] = {
 Texture_data back_ground_1[] = {
     {0,L"./Data/Images/back_sun.png",{0,0},{1920,1080}},
     {2,L"./Data/Images/Title.png",{0,0},{1920,1080}},
+    {71,L"./Data/Images/stageSelect.png",{0,0},{1920,1080}},
 };
 
 Texture_data back_ground[] = {
