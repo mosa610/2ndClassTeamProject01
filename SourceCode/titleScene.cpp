@@ -18,8 +18,8 @@ void TitleScene::init()
     GameLib::texture::load(back_ground_1[1].tex_num, back_ground_1[1].filename);
     GameLib::texture::load(ui[5].tex_num, ui[5].filename);
     //motion = new TitleMotion*[5];
-    play = { 400,800 };
-    tutorial = { 1300,800 };
+    play = { 400-50,800-50 };
+    tutorial = { 1300-50,800-50 };
 
 }
 
@@ -72,8 +72,11 @@ void TitleScene::draw()
     GameLib::texture::begin(back_ground_1[1].tex_num);
     GameLib::texture::draw(back_ground_1[1].tex_num, { 0,0 }, { 1,1 }, { back_ground_1[1].texSize_ }, { back_ground_1[timer].maxTexSize_ }, { 0,0 }, 0);
     GameLib::texture::end(back_ground_1[1].tex_num);
-    GameLib::primitive::rect({ play.x,play.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
-    GameLib::primitive::rect({ tutorial.x,tutorial.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });
+    GameLib::primitive::rect({ play.x,play.y }, { 350, 200 }, { 0, 0 }, 0, { 1, 0, 0, 1 });
+    GameLib::text_out(4, "play", play.x + 175, play.y + 100, 4, 4, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    GameLib::primitive::rect({ tutorial.x,tutorial.y }, { 350, 200 }, { 0, 0 }, 0, { 0, 0, 1, 1 });
+    GameLib::text_out(4, "tuto", tutorial.x + 175, tutorial.y + 60, 4, 4, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    GameLib::text_out(4, "rial", tutorial.x + 175, tutorial.y + 140, 4, 4, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
 
     GameLib::texture::begin(ui[5].tex_num);
     GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
