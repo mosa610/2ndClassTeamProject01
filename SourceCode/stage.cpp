@@ -37,22 +37,18 @@ Stage_script stage[4][7] = {
 
 };
 
-Stage_script stageWeather[4][1] = {
+Stage_script stageWeather[4][2] = {
     {
-        {30,0,0,0,0,0,0,0,true}
+        {30,0,0,0,0,0,0,0,true,Weather::rain}
     },
     {
         {-1,0,0}
     },
     {
         {10,0,0,0,0,0,0,0,true,Weather::thunder},
-        {90,0,0,0,0,0,0,0,true,Weather::rain},
     },
     {
-        {-1,0,0}
-    },
-    {
-        {60,0,0,0,0,0,0,0,true}
+        {60,0,0,0,0,0,0,0,true,Weather::rain}
     }
 };
 
@@ -64,7 +60,7 @@ Stage_script stageTime[4][1] = {
         {180,0,0},
     },
     {
-        {180,0,0}
+        {30,0,0}
     },
     {
         {180,0,0},
