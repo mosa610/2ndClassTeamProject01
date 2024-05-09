@@ -2,7 +2,16 @@
 
 int stageNumber;
 
-Stage_script stage[2][7] = {
+Stage_script stage[3][7] = {
+    {
+        {0,200,30,2,100,true,false,0},
+        {0,400,31,0.5f,100,true,false,1},
+        {15,600,32,1,2000,true,true,1},
+        {30,1100,33,1,1000,true,false,0},
+         {-1,0,0}
+
+    },
+
     {
         {0,600,30,2,100,true,false,0},     //time, position_x, tex_num, scale, HP, regenerate, texture_transition, status, weather;
         {10,200,30,2,100,true,false,0},
@@ -12,6 +21,7 @@ Stage_script stage[2][7] = {
         {80,900,33,1,1000,true,false,0},
         {-1,0,0}       //end
     },
+
     {
         {0,900,30,2,50,true,false,0},
         {10,400,31,0.5f,50,true,false,1},

@@ -31,7 +31,7 @@ void StageSelectScene::update()
             cursorPos.x < stage01.x + 350 &&
             cursorPos.y < stage01.y + 200)
         {
-            stageNumber = 0;
+            stageNumber = 1;
             changeScene(GameScene::instance());
         }
     }
@@ -42,7 +42,7 @@ void StageSelectScene::update()
             cursorPos.x < stage02.x + 350 &&
             cursorPos.y < stage02.y + 200)
         {
-            stageNumber = 1;
+            stageNumber = 2;
             changeScene(GameScene::instance());
         }
     }
