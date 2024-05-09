@@ -297,8 +297,6 @@
     <ClCompile Include="GameLib\wnd_proc.cpp" />
     <ClCompile Include="SourceCode\building.cpp" />
     <ClCompile Include="SourceCode\effect.cpp" />
-    <ClCompile Include="SourceCode\GameClearScene.cpp" />
-    <ClCompile Include="SourceCode\GameOverScene.cpp" />
     <ClCompile Include="SourceCode\GameScene.cpp" />
     <ClCompile Include="SourceCode\item.cpp" />
     <ClCompile Include="SourceCode\main.cpp" />
