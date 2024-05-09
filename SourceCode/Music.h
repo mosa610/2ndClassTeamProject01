@@ -6,9 +6,15 @@
 enum SE
 {
     SELECT = 10,
-    CANCEL,
     ALARM,
     EXPLOSION,
+    DRILL,
+    HUMMER,
+    FIRE,
+    CHAINSOW,
+    AXE,
+    RAIN,
+    THUNDER,
     COLLAPSE
 };
 
