@@ -11,6 +11,9 @@ int motion_timer;
 TitleMotion** motion;
 VECTOR2 play;
 VECTOR2 tutorial;
+extern int stageNumber;
+
+
 void TitleScene::init()
 {
     timer = 0;

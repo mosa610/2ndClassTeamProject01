@@ -51,6 +51,7 @@ void GameScene::init()
     item_ = new Item[itemNum];
     effect = new Effect*[buildingNum];
     gameTimer = 0;
+    status_.setCurrentCost(0);
     for (int i = 50; i < 55; i++)
     {
         GameLib::texture::load(i, effect_data[i - 50].filename);
@@ -208,7 +209,7 @@ void GameScene::update()
 
     if (timer_ % 60 == 0)
     {
-        gameTimer += addTimer;
+        gameTimer++;
     }
     if (gameTimer >= 180)
     {

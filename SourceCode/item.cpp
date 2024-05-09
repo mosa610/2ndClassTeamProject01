@@ -4,6 +4,12 @@
 
 ItemUI* itemUi;
 int drag_con[6];
+std::string axe;
+std::string chainsaw;
+std::string fire;
+std::string hammer;
+std::string drill;
+std::string dynamite;
 
 Item::Item()
 {
@@ -109,7 +115,19 @@ void Item::draw()
     //GameLib::debug::setString("cursor%d", GameLib::input::getCursorPosX());
     //GameLib::debug::setString("cursor%d", GameLib::input::getCursorPosY());
     //GameLib::debug::setString("drag%d", drag_con[0]);
-
+    axe = std::to_string(5);
+    GameLib::text_out(1, axe, 200, 1030, 3, 3, 1, 1, 1, 1,GameLib::TEXT_ALIGN::MIDDLE);
+    chainsaw = std::to_string(20);
+    GameLib::text_out(1, chainsaw, 500, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    fire = std::to_string(50);
+    GameLib::text_out(1, fire, 800, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    hammer = std::to_string(5);
+    GameLib::text_out(1, hammer, 1104, 1030, 3, 3, 1, 1, 1, 1,GameLib::TEXT_ALIGN::MIDDLE);
+    drill = std::to_string(20);
+    GameLib::text_out(1, drill, 1400, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    dynamite = std::to_string(50);
+    GameLib::text_out(1, dynamite, 1700, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
+    
 }
 
 void Item::Enter()
