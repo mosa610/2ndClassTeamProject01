@@ -1,5 +1,11 @@
 #include "MusicManager.h"
 
+MusicManager::~MusicManager()
+{
+	//music::clear();
+}
+
+
 void MusicManager::TRG_play(int index, bool isLoop)
 {
 	music::play(index, isLoop);

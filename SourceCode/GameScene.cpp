@@ -8,6 +8,7 @@
 #include "stage.h"
 #include <time.h>
 #include "effect.h"
+#include "MusicManager.h"
 
 GameScene GameScene::instance_;
 
@@ -112,6 +113,7 @@ void GameScene::deinit()
 
 void GameScene::update()
 {
+    MusicManager::Instance().STATE_play(BGM::GAME, true);
     Mouse::instance()->setPosition();
     VECTOR2 mouse_pos;
     mouse_pos = Mouse::instance()->getPosition();
@@ -167,6 +169,7 @@ void GameScene::update()
             if (building_[i]->game_over == true)
             {
                 changeScene(GameOverScene::instance());
+                MusicManager::Instance().Stop(BGM::GAME);
             }
         }
     }
@@ -212,6 +215,7 @@ void GameScene::update()
     if (gameTimer < 0)
     {
         changeScene(GameClearScene::instance());
+        MusicManager::Instance().Stop(BGM::GAME);
     }
 
     if (acceleration == true && timer_ % 2 != 0)

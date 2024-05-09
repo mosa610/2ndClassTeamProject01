@@ -22,4 +22,6 @@ private:
 
     VECTOR2 stage01;
     VECTOR2 stage02;
+    VECTOR2 stage03;
+    VECTOR2 stage04;
 };

@@ -4,6 +4,7 @@
 #include "tutorialScene.h"
 #include "Texture_data.h"
 #include "mouse.h"
+#include "MusicManager.h"
 
 TitleScene TitleScene::instance_;
 int timer;
@@ -51,6 +52,7 @@ void TitleScene::update()
             cursorPos.x < play.x + 350 &&
             cursorPos.y < play.y + 200)
         {
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(StageSelectScene::instance());
         }
     }
@@ -61,9 +63,12 @@ void TitleScene::update()
             cursorPos.x < tutorial.x + 350 &&
             cursorPos.y < tutorial.y + 200)
         {
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(TutorialScene::instance());
         }
     }
+
+    MusicManager::Instance().STATE_play(BGM::TITLE, true);
 }
 
 void TitleScene::draw()

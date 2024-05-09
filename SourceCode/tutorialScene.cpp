@@ -3,6 +3,7 @@
 #include "GameScene.h"
 #include "stage.h"
 #include "Texture_data.h"
+#include "MusicManager.h"
 
 TutorialScene TutorialScene::instance_;
 extern int timer;
@@ -42,6 +43,7 @@ void TutorialScene::update()
             cursorPos.y < next.y + 200)
         {
             page = 1;
+            MusicManager::Instance().TRG_play(SE::SELECT);
         }
     }
     else if (TRG(0) & GameLib::input::PAD_START && page == 1)
@@ -52,6 +54,7 @@ void TutorialScene::update()
             cursorPos.y < next.y + 200)
         {
             page = 2;
+            MusicManager::Instance().TRG_play(SE::SELECT);
         }
     }
     else if (TRG(0) & GameLib::input::PAD_START && page == 2)
@@ -61,6 +64,7 @@ void TutorialScene::update()
             cursorPos.x < next.x + 350 &&
             cursorPos.y < next.y + 200)
         {
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(TitleScene::instance());
         }
     }
