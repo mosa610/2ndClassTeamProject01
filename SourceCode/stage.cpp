@@ -28,24 +28,25 @@ Stage_script stage[4][7] = {
     }
 };
 
-Stage_script stageWeather[3][1] = {
+Stage_script stageWeather[4][2] = {
     {
         {-1,0,0}
     },
     {
-        {40,0,0,0,0,0,0,0,true}
+        {10,0,0,0,0,0,0,0,true},
+        {90,0,0,0,0,0,0,0,true},
     },
     {
         {-1,0,0}
     },
 };
 
-Stage_script stageTime[3][1] = {
+Stage_script stageTime[4][1] = {
     {
         {180,0,0}
     },
     {
-        {180,0,0},
+        {180,0,0}
     },
     {
         {180,0,0}
