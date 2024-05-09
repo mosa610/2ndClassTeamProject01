@@ -25,7 +25,7 @@ void GameClearScene::deinit()
 
 void GameClearScene::update()
 {
-    MusicManager::Instance().STATE_play(BGM::CLEAR, true);
+    MusicManager::Instance().STATE_play(BGM::CLEAR, false);
     cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
        static_cast<float>(GameLib::input::getCursorPosY()) };
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)

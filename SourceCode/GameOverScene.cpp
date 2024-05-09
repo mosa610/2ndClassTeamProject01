@@ -25,7 +25,7 @@ void GameOverScene::deinit()
 
 void GameOverScene::update()
 {
-    MusicManager::Instance().STATE_play(BGM::OVER, true);
+    MusicManager::Instance().STATE_play(BGM::OVER, false);
     cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
        static_cast<float>(GameLib::input::getCursorPosY()) };
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)
