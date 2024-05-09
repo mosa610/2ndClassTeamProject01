@@ -168,8 +168,8 @@ void GameScene::update()
             building_[i]->update();
             if (building_[i]->game_over == true)
             {
-                //changeScene(GameOverScene::instance());
-                //MusicManager::Instance().Stop(BGM::GAME);
+                /*changeScene(GameOverScene::instance());
+                MusicManager::Instance().Stop(BGM::GAME);*/
             }
         }
     }
