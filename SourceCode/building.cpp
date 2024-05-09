@@ -206,6 +206,7 @@ void building::update()
                 effect_[i]->effectTimer = 0;
                 if (effect_[i])
                 {
+                    MusicManager::Instance().Stop(SE::FIRER);
                     delete effect_[i];
                 }
             }
