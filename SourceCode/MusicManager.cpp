@@ -1,11 +1,17 @@
 #include "MusicManager.h"
 
+MusicManager::~MusicManager()
+{
+	music::clear();
+}
+
+
 void MusicManager::TRG_play(int index, bool isLoop)
 {
 	music::play(index, isLoop);
 }
 
-void MusicManager::STATE_play(int index, bool isLoop)
+void MusicManager::STATE_play(int index, bool isLoop = false)
 {
 	if (GameLib::music::getState(index) == 0)
 		music::play(index, isLoop);
