@@ -127,7 +127,7 @@ void Item::draw()
     GameLib::text_out(1, drill, 1400, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
     dynamite = std::to_string(20);
     GameLib::text_out(1, dynamite, 1700, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
-    
+
 }
 
 void Item::Enter()
