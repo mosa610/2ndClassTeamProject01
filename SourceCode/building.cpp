@@ -320,7 +320,7 @@ void building::hit(Item* item, int current_item)
             build_pos.x + build_width_height.x >item_pos.x &&
             build_pos.y + build_width_height.y >item_pos.y)
         {
-            if (TRG_RELEASE(0) & GameLib::input::PAD_START)
+            if (TRG_RELEASE(0) & GameLib::input::PAD_START&&HP>0)
             {
                 doEffect = true;
                 switch (i)
