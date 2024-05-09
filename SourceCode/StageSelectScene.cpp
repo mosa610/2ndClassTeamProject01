@@ -2,12 +2,14 @@
 #include "GameScene.h"
 #include "mouse.h"
 #include "stage.h"
+#include "Texture_data.h"
 
 StageSelectScene StageSelectScene::instance_;
 
 void StageSelectScene::init()
 {
     stageNumber = -1;
+    GameLib::texture::load(ui[5].tex_num, ui[5].filename);
 
     stage01 = { 400,800 };
     stage02 = { 1300,800 };
@@ -15,7 +17,7 @@ void StageSelectScene::init()
 
 void StageSelectScene::deinit()
 {
-
+    GameLib::texture::release(ui[5].tex_num);
 }
 
 void StageSelectScene::update()
@@ -52,6 +54,9 @@ void StageSelectScene::draw()
 
     GameLib::primitive::rect({ stage01.x,stage01.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
     GameLib::primitive::rect({ stage02.x,stage02.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });
+    GameLib::texture::begin(ui[5].tex_num);
+    GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
+    GameLib::texture::end(ui[5].tex_num);
 }
 
 void StageSelectScene::reset()

@@ -16,4 +16,6 @@ public:
 private:
     GameScene() {}
     GameScene(const GameScene&) = delete;
+    VECTOR2 cursorPos;
+
 };

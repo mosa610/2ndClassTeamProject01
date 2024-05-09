@@ -52,6 +52,8 @@ void GameScene::init()
     GameLib::texture::load(ui[2].tex_num, ui[2].filename);
     GameLib::texture::load(ui[3].tex_num, ui[3].filename);
     GameLib::texture::load(0, back_ground_1[0].filename);
+    GameLib::texture::load(ui[5].tex_num, ui[5].filename);
+
     newEffect(7);
 }
 
@@ -72,6 +74,8 @@ void GameScene::deinit()
     GameLib::texture::release(0);
     GameLib::texture::release(6);
     GameLib::texture::release(7);
+    GameLib::texture::release(ui[5].tex_num);
+
 }
 
 void GameScene::update()
@@ -135,7 +139,8 @@ void GameScene::update()
     if (cloud_pos_x == 0)
     {
         addSpeed = 0;
-        weather = Weather::thunder;
+        weather = Weather::rain;
+        
         weatherTimer++;
     }
     if (timer_ % 10 < 5)
@@ -156,7 +161,7 @@ void GameScene::update()
     {
         thunder_pos = 0;
     }
-    if (weatherTimer == 600)
+    if (weatherTimer == 1200)
     {
         addSpeed = 4.0f;
         weather == Weather::nornal;
@@ -187,6 +192,8 @@ void GameScene::update()
 
 void GameScene::draw()
 {
+    cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
+       static_cast<float>(GameLib::input::getCursorPosY()) };
     GameLib::clear(0.2f, 0.2f, 1.0f);
     GameLib::texture::begin(0);
     GameLib::texture::draw(0, { 0,0 }, { 1,1 }, { back_ground_1[0].texSize_ }, { back_ground_1[0].maxTexSize_ }, { 0,0 }, 0);
@@ -226,7 +233,9 @@ void GameScene::draw()
     GameLib::texture::begin(ui[1].tex_num);
     GameLib::texture::draw(ui[1].tex_num, { SCREEN_W - 130,10 }, { 0.2f,0.2f }, { ui[0].texSize_ }, { ui[0].maxTexSize_ }, { 0,0 }, 0, { 0, 1, 0, UI_A });
     GameLib::texture::end(ui[1].tex_num);
-
+    GameLib::texture::begin(ui[5].tex_num);
+    GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
+    GameLib::texture::end(ui[5].tex_num);
     GameLib::debug::setString("stage_num%d", stageNumber);
 }
 

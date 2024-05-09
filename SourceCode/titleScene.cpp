@@ -15,6 +15,8 @@ void TitleScene::init()
 {
     timer = 0;
     GameLib::texture::load(texture_data[0].tex_num, texture_data[0].filename);
+    GameLib::texture::load(back_ground_1[1].tex_num, back_ground_1[1].filename);
+    GameLib::texture::load(ui[5].tex_num, ui[5].filename);
     //motion = new TitleMotion*[5];
     play = { 400,800 };
     tutorial = { 1300,800 };
@@ -23,7 +25,8 @@ void TitleScene::init()
 
 void TitleScene::deinit()
 {
-    GameLib::texture::release(2);
+    GameLib::texture::release(back_ground_1[1].tex_num);
+    GameLib::texture::release(ui[5].tex_num);
 }
 
 void TitleScene::update()
@@ -36,7 +39,6 @@ void TitleScene::update()
     timer++;
     if (timer >= 60) timer = 0;
     motion_timer++;*/
-    GameLib::texture::load(2, back_ground_1[1].filename);
     cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
        static_cast<float>(GameLib::input::getCursorPosY()) };
     if (TRG(0) & GameLib::input::PAD_START)
@@ -67,11 +69,15 @@ void TitleScene::draw()
     /*GameLib::texture::begin(1);
     GameLib::texture::draw(1, { 0,0 }, { 1,1 }, { back_ground_1[1].texSize_}, {back_ground_1[timer].maxTexSize_}, {0,0}, 0);
     GameLib::texture::end(1);*/
-    GameLib::texture::begin(2);
-    GameLib::texture::draw(2, { 0,0 }, { 1,1 }, { back_ground_1[1].texSize_ }, { back_ground_1[timer].maxTexSize_ }, { 0,0 }, 0);
-    GameLib::texture::end(2);
+    GameLib::texture::begin(back_ground_1[1].tex_num);
+    GameLib::texture::draw(back_ground_1[1].tex_num, { 0,0 }, { 1,1 }, { back_ground_1[1].texSize_ }, { back_ground_1[timer].maxTexSize_ }, { 0,0 }, 0);
+    GameLib::texture::end(back_ground_1[1].tex_num);
     GameLib::primitive::rect({ play.x,play.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
     GameLib::primitive::rect({ tutorial.x,tutorial.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });
+
+    GameLib::texture::begin(ui[5].tex_num);
+    GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
+    GameLib::texture::end(ui[5].tex_num);
     reset();
 }
 
