@@ -9,9 +9,12 @@ GameOverScene GameOverScene::instance_;
 void GameOverScene::init()
 {
     GameLib::texture::load(ui[5].tex_num, ui[5].filename);
+    GameLib::texture::load(back_ground_1[3].tex_num, back_ground_1[3].filename);
 
     retryPos = { 400,800 };
     retirePos = { 1300,800 };
+
+    nextScene_ = nullptr;
 }
 
 void GameOverScene::deinit()
@@ -48,6 +51,10 @@ void GameOverScene::update()
 void GameOverScene::draw()
 {
     GameLib::clear(0, 0, 1);
+
+    GameLib::texture::begin(back_ground_1[3].tex_num);
+    GameLib::texture::draw(back_ground_1[3].tex_num, { 0,0 }, { 1,1 }, { back_ground_1[3].texSize_ }, { back_ground_1[3].maxTexSize_ }, { 0,0 }, 0);
+    GameLib::texture::end(back_ground_1[3].tex_num);
 
     GameLib::primitive::rect({ retryPos.x,retryPos.y }, { 350, 200 }, { 50, 50 }, 0, { 1, 0, 0, 1 });
     GameLib::primitive::rect({ retirePos.x,retirePos.y }, { 350, 200 }, { 50, 50 }, 0, { 0, 0, 1, 1 });

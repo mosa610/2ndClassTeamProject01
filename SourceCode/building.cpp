@@ -431,8 +431,8 @@ void building::hageVSBuild(float hagepos, float radius)
     if (build_pos.x > hagepos - radius &&
         build_pos.x < hagepos + radius)
     {
-        if(hageHit)
-        plusHP = -50;
+        if (hageHit)
+            plusHP = -10;
     }
 }
 

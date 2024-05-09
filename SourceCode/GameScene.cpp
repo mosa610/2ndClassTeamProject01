@@ -1,5 +1,6 @@
 #include "GameScene.h"
-#include "GameoverScene.h"
+#include "GameOverScene.h"
+#include "GameClearScene.h"
 #include "mouse.h"
 #include "status.h"
 #include "building.h"
@@ -49,6 +50,8 @@ void GameScene::init()
     itemNum = 1;
     item_ = new Item[itemNum];
     effect = new Effect*[buildingNum];
+    gameTimer = 0;
+    status_.setCurrentCost(0);
     for (int i = 50; i < 55; i++)
     {
         GameLib::texture::load(i, effect_data[i - 50].filename);
@@ -63,6 +66,8 @@ void GameScene::init()
     GameLib::texture::load(ui[7].tex_num, ui[7].filename);
 
     newEffect(7);
+
+    nextScene_ = nullptr;
 }
 
 void GameScene::deinit()
@@ -204,11 +209,11 @@ void GameScene::update()
 
     if (timer_ % 60 == 0)
     {
-        gameTimer += addTimer;
+        gameTimer++;
     }
-    if (gameTimer == 180)
+    if (gameTimer >= 180)
     {
-        changeScene(GameOverScene::instance());
+        changeScene(GameClearScene::instance());
     }
 
     if (acceleration == true && timer_ % 2 != 0)
