@@ -21,6 +21,7 @@ public:
     void hageVSBuild(float hagepos, float radius);
 
     std::list<building> Building;
+    bool game_over = false;
 private:
     VECTOR2 position;
     VECTOR2 scale;
