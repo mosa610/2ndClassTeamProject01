@@ -120,6 +120,7 @@ void GameScene::update()
         for (int j = 0; j < currentItemNum; j++)
         {
             building_[i]->hit(&item_[j], j);
+            building_[i]->hageVSBuild(hage_pos_x, 200);
         }
     }
     for (int i = 0; i < currentBuildingNum-1; i++)
@@ -140,7 +141,7 @@ void GameScene::update()
     {
         addSpeed = 0;
         weather = Weather::rain;
-        
+
         weatherTimer++;
     }
     if (timer_ % 10 < 5)
@@ -240,5 +241,6 @@ void GameScene::draw()
 }
 
 void GameScene::reset()
-{ 
+{
+
 }
