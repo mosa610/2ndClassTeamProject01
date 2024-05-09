@@ -126,6 +126,9 @@
     <ClInclude Include="SourceCode\StageSelectScene.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="SourceCode\GameoverScene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="GameLib\primitive.hlsli">
@@ -250,6 +253,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\StageSelectScene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameoverScene.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
