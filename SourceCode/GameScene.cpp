@@ -32,6 +32,8 @@ extern float hage_pos_x;
 extern float hage_scale_x;
 float hage_texpos_x = 64;
 float hage_texpos_y = 0;
+int a = 100;
+std::string b;
 
 void GameScene::init()
 {
@@ -189,6 +191,7 @@ void GameScene::update()
         timer_++;
     else
     timer_ += addTimer;
+    a++;
 }
 
 void GameScene::draw()
@@ -238,6 +241,9 @@ void GameScene::draw()
     GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
     GameLib::texture::end(ui[5].tex_num);
     GameLib::debug::setString("stage_num%d", stageNumber);
+
+    b = std::to_string(a);
+    GameLib::text_out(1, b+":", 0, 0, 1, 1);
 }
 
 void GameScene::reset()
