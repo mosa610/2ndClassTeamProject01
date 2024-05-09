@@ -212,7 +212,7 @@ void building::update()
         }
         MusicManager::Instance().STATE_play(SE::COLLAPSE);
     }
-    
+
 
     if (addTimer > 1 && timer % 2 != 0)
         timer++;

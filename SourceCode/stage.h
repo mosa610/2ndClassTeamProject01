@@ -1,5 +1,5 @@
 #pragma once
-
+#include "status.h"
 
 struct Stage_script
 {
@@ -12,6 +12,7 @@ struct Stage_script
     bool texture_transition;
     int status;
     bool weather = false;
+    Weather tr = Weather::nornal;
 };
 // ƒOƒ[ƒoƒ‹‚É‚µ‚Ä‚²‚ß‚ñ
 extern int stageNumber;
