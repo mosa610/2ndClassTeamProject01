@@ -9,7 +9,7 @@ Texture_data texture_data[] = {
 
 Texture_data back_ground_1[] = {
     {0,L"./Data/Images/back_sun.png",{0,0},{1920,1080}},
-    {2,L"./Data/Images/Title.png",{0,0},{1920,1080}}
+    {2,L"./Data/Images/Title.png",{0,0},{1920,1080}},
 };
 
 Texture_data back_ground[] = {
@@ -90,4 +90,5 @@ Texture_data ui[] =
     {9,L"./Data/Images/Asset43.png",{0,0},{512,396}},
     {7,L"./Data/Images/back_rain.png",{0,0},{3840,1080}},
     {6,L"./Data/Images/back_thunder.png",{0,0},{3840,1080}},
+    {5,L"./Data/Images/hage_ver02.png",{0,0},{128,128}}
 };

@@ -10,7 +10,10 @@ int effectNum;
 static int currentEffectNum;
 int itemStatus;
 float distHP;
-
+float hage_pos_x = 0;
+float hage_speed = 3.0f;
+float hage_scale_x = 2;
+extern float hage_texpos_x;
 int plusHP;
 extern int weather;
 
@@ -56,6 +59,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     currentEffectNum = 0;
     effectNum = 7;
     buildStatus = status;
+    GameLib::texture::load(ui[4].tex_num, ui[4].filename);
     //effect_ = new Effect * [effectNum];
 }
 
@@ -66,6 +70,7 @@ building::~building()
         GameLib::texture::release(texNum);
         texture_data[texNum - 30].load = false;
     }
+    GameLib::texture::release(5);
 }
 
 void building::update()
@@ -195,14 +200,14 @@ void building::update()
         timer++;
     else
         timer += addTimer;
+
 }
 
 void building::draw()
 {
     GameLib::texture::begin(texNum);
-    GameLib::texture::draw(texNum, { position }, { scale }, { nowTexSize }, { texSize }, { -maxTexSize.x/2,0 }, 0,{color});
+    GameLib::texture::draw(texNum, { position }, { scale.x,scale.y }, { nowTexSize }, { texSize }, { -maxTexSize.x/2,0 }, 0,{color});
     GameLib::texture::end(texNum);
-
     for (int i = 0; i < ItemNo::item_end; i++)
     {
         if (effct_anime == true)
@@ -282,7 +287,10 @@ void building::draw()
 
     //GameLib::primitive::rect({ position.x - (maxTexSize.x * scale.x) / 2,position.y - (maxTexSize.y * scale.y)}, {maxTexSize.x * scale.x,maxTexSize.y * scale.y}, {0,0});
     GameLib::debug::setString("cost:%d", current_cost);
-
+    //GameLib::primitive::circle({ hage_pos }, 200, { 1,1 }, 0, { 1,0,0,0.5f });
+    /*GameLib::texture::begin(ui[4].tex_num);
+    GameLib::texture::draw(ui[4].tex_num, { hage_pos_x,690 }, { -hage_scale_x,4 }, { 0,0 }, { 32,32 }, { 16,16 }, 0, { 1,1,1,1 });
+    GameLib::texture::end(ui[4].tex_num);*/
 }
 
 void building::hit(Item* item, int current_item)
@@ -400,6 +408,22 @@ void building::hit(Item* item, int current_item)
             if (HP < 0) HP = 0;
         }
     }
+}
+
+void hage()
+{
+    if (hage_pos_x > 1904)
+    {
+        hage_speed *= -1.0f;
+        hage_scale_x *= -1.0f;
+    }
+    if (hage_pos_x < 0)
+    {
+        hage_speed *= -1.0f;
+        hage_scale_x *= -1.0f;
+    }
+
+    hage_pos_x += hage_speed * addTimer;
 }
 
 
