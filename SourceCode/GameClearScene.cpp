@@ -3,6 +3,7 @@
 #include "GameScene.h"
 #include "mouse.h"
 #include "Texture_data.h"
+#include "MusicManager.h"
 
 GameClearScene GameClearScene::instance_;
 
@@ -24,6 +25,7 @@ void GameClearScene::deinit()
 
 void GameClearScene::update()
 {
+    MusicManager::Instance().STATE_play(BGM::CLEAR, true);
     cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
        static_cast<float>(GameLib::input::getCursorPosY()) };
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)
@@ -33,7 +35,9 @@ void GameClearScene::update()
             cursorPos.x < retryPos.x + 350 &&
             cursorPos.y < retryPos.y + 200)
         {
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(GameScene::instance());
+            MusicManager::Instance().Stop(BGM::CLEAR);
         }
     }
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)
@@ -43,7 +47,9 @@ void GameClearScene::update()
             cursorPos.x < stageSelectPos.x + 350 &&
             cursorPos.y < stageSelectPos.y + 200)
         {
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(StageSelectScene::instance());
+            MusicManager::Instance().Stop(BGM::CLEAR);
         }
     }
 }

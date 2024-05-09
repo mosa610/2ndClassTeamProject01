@@ -3,6 +3,7 @@
 #include "mouse.h"
 #include "stage.h"
 #include "Texture_data.h"
+#include "MusicManager.h"
 
 StageSelectScene StageSelectScene::instance_;
 
@@ -28,6 +29,7 @@ void StageSelectScene::deinit()
 
 void StageSelectScene::update()
 {
+    MusicManager::Instance().STATE_play(BGM::TITLE, true);
     cursorPos = { static_cast<float>(GameLib::input::getCursorPosX()),
        static_cast<float>(GameLib::input::getCursorPosY()) };
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)
@@ -37,8 +39,10 @@ void StageSelectScene::update()
             cursorPos.x < stage01.x + 350 &&
             cursorPos.y < stage01.y + 200)
         {
-            stageNumber = 0;
+            stageNumber = 1;
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(GameScene::instance());
+            MusicManager::Instance().Stop(BGM::TITLE);
         }
     }
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)
@@ -60,7 +64,9 @@ void StageSelectScene::update()
             cursorPos.y < stage03.y + 200)
         {
             stageNumber = 2;
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(GameScene::instance());
+            MusicManager::Instance().Stop(BGM::TITLE);
         }
     }
     if (GameLib::input::TRG(0) & GameLib::input::PAD_START)

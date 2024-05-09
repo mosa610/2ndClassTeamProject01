@@ -52,6 +52,7 @@ void TitleScene::update()
             cursorPos.x < play.x + 350 &&
             cursorPos.y < play.y + 200)
         {
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(StageSelectScene::instance());
         }
     }
@@ -62,6 +63,7 @@ void TitleScene::update()
             cursorPos.x < tutorial.x + 350 &&
             cursorPos.y < tutorial.y + 200)
         {
+            MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(TutorialScene::instance());
         }
     }

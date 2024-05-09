@@ -11,7 +11,7 @@ void MusicManager::TRG_play(int index, bool isLoop)
 	music::play(index, isLoop);
 }
 
-void MusicManager::STATE_play(int index, bool isLoop = false)
+void MusicManager::STATE_play(int index, bool isLoop)
 {
 	if (GameLib::music::getState(index) == 0)
 		music::play(index, isLoop);

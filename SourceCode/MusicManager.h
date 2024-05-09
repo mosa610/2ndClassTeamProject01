@@ -11,11 +11,11 @@ public:
 	MusicManager()
 	{
 		// music::loadÇçsÇ§
-		music::load(SE::AXE, L"./Data/Sounds/SE/Axe.wav");
+		music::load(SE::AX, L"./Data/Sounds/SE/Axe.wav");
 		music::load(SE::CHAINSOW, L"./Data/Sounds/SE/Chainsow.wav");
-		music::load(SE::FIRE, L"./Data/Sounds/SE/Fire.wav");
+		music::load(SE::FIRER, L"./Data/Sounds/SE/Fire.wav");
 		music::load(SE::HUMMER, L"./Data/Sounds/SE/Hummer.wav");
-		music::load(SE::DRILL, L"./Data/Sounds/SE/Drill.wav");
+		music::load(SE::DRIL, L"./Data/Sounds/SE/Drill.wav");
 		music::load(SE::EXPLOSION, L"./Data/Sounds/SE/Explosion_4.wav");
 		music::load(SE::RAIN, L"./Data/Sounds/SE/Rain.wav");
 		music::load(SE::THUNDER, L"./Data/Sounds/SE/Thunder.wav");
@@ -33,8 +33,8 @@ public:
 	~MusicManager();
 
 public:
-	void TRG_play(int index, bool isLoop);
-	void STATE_play(int index, bool isLoop);
+	void TRG_play(int index, bool isLoop = false);
+	void STATE_play(int index, bool isLoop = false);
 	void Stop(int index);
 	void Pause(int index);
 
