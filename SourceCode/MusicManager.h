@@ -30,7 +30,10 @@ public:
 		music::load(BGM::OVER, L"Data/Sounds/GameOver/Game-Lose_AdobeStock_521816765_preview.wav");
 		music::load(BGM::RESULT, L"Data/Sounds/Result/FORCE-CONTEST_AdobeStock_452589209_preview.wav");
 	}
-	~MusicManager() {}
+	~MusicManager() 
+	{
+		music::clear();
+	}
 
 public:
 	void TRG_play(int index, bool isLoop);
