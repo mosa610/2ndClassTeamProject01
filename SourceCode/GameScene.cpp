@@ -199,11 +199,11 @@ void GameScene::update()
     coinTimer++;
     coin_anime = 16 * (coinTimer / 4);
 
-    gameTimer += addTimer;
+    /*gameTimer += addTimer;
     if (gameTimer % 60 >= 180)
     {
         changeScene(GameoverScene::instance());
-    }
+    }*/
     if (acceleration == true && timer_ % 2 != 0)
         timer_++;
     else
