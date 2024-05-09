@@ -14,6 +14,8 @@ void StageSelectScene::init()
 
     stage01 = { 400,800 };
     stage02 = { 1300,800 };
+
+    nextScene_ = nullptr;
 }
 
 void StageSelectScene::deinit()
