@@ -117,15 +117,15 @@ void Item::draw()
     //GameLib::debug::setString("drag%d", drag_con[0]);
     axe = std::to_string(5);
     GameLib::text_out(1, axe, 200, 1030, 3, 3, 1, 1, 1, 1,GameLib::TEXT_ALIGN::MIDDLE);
-    chainsaw = std::to_string(20);
+    chainsaw = std::to_string(10);
     GameLib::text_out(1, chainsaw, 500, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
-    fire = std::to_string(50);
+    fire = std::to_string(20);
     GameLib::text_out(1, fire, 800, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
     hammer = std::to_string(5);
     GameLib::text_out(1, hammer, 1104, 1030, 3, 3, 1, 1, 1, 1,GameLib::TEXT_ALIGN::MIDDLE);
-    drill = std::to_string(20);
+    drill = std::to_string(10);
     GameLib::text_out(1, drill, 1400, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
-    dynamite = std::to_string(50);
+    dynamite = std::to_string(20);
     GameLib::text_out(1, dynamite, 1700, 1030, 3, 3, 1, 1, 1, 1, GameLib::TEXT_ALIGN::MIDDLE);
     
 }
@@ -159,37 +159,37 @@ void Item::Enter()
 
 void Item::Axe()
 {
-    atk = 20;
+    atk = 10;
     cost = 5;
 }
 
 void Item::Chainsaw()
 {
-    atk = 50;
+    atk = 30;
     cost = 10;
 }
 
 void Item::Fire()
 {
-    atk = 100;
+    atk = 50;
     cost = 20;
 }
 
 void Item::Hammer()
 {
-    atk = 20;
+    atk = 10;
     cost = 5;
 }
 
 void Item::Drill()
 {
-    atk = 50;
+    atk = 30;
     cost = 10;
 }
 
 void Item::Dynamite()
 {
-    atk = 100;
+    atk = 70;
     cost = 20;
 }
 
