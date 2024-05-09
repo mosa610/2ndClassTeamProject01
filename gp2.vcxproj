@@ -177,6 +177,8 @@
     <ClInclude Include="SourceCode\all.h" />
     <ClInclude Include="SourceCode\building.h" />
     <ClInclude Include="SourceCode\effect.h" />
+    <ClInclude Include="SourceCode\GameClearScene.h" />
+    <ClInclude Include="SourceCode\GameOverScene.h" />
     <ClInclude Include="SourceCode\GameScene.h" />
     <ClInclude Include="SourceCode\item.h" />
     <ClInclude Include="SourceCode\mouse.h" />

@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "GameoverScene.h"
 #include "mouse.h"
 #include "status.h"
 #include "building.h"
@@ -32,8 +33,9 @@ extern float hage_pos_x;
 extern float hage_scale_x;
 float hage_texpos_x = 64;
 float hage_texpos_y = 0;
-int a = 100;
-std::string b;
+float coin_anime = 0;
+int coinTimer = 0;
+int gameTimer = 0;
 
 void GameScene::init()
 {
@@ -55,6 +57,8 @@ void GameScene::init()
     GameLib::texture::load(ui[3].tex_num, ui[3].filename);
     GameLib::texture::load(0, back_ground_1[0].filename);
     GameLib::texture::load(ui[5].tex_num, ui[5].filename);
+    GameLib::texture::load(ui[6].tex_num, ui[6].filename);
+    GameLib::texture::load(ui[7].tex_num, ui[7].filename);
 
     newEffect(7);
 }
@@ -77,6 +81,8 @@ void GameScene::deinit()
     GameLib::texture::release(6);
     GameLib::texture::release(7);
     GameLib::texture::release(ui[5].tex_num);
+    GameLib::texture::release(ui[6].tex_num);
+    GameLib::texture::release(ui[7].tex_num);
 
 }
 
@@ -187,6 +193,18 @@ void GameScene::update()
     {
         hage_texpos_x = 0;
     }
+    if (coinTimer > 56)
+    {
+        coinTimer = 0;
+    }
+    coinTimer++;
+    coin_anime = 16 * (coinTimer / 4);
+
+    /*gameTimer += addTimer;
+    if (gameTimer % 60 >= 180)
+    {
+        changeScene(GameoverScene::instance());
+    }*/
     if (acceleration == true && timer_ % 2 != 0)
         timer_++;
     else
@@ -222,12 +240,24 @@ void GameScene::draw()
         GameLib::texture::begin(ui[2].tex_num);
         GameLib::texture::draw(ui[2].tex_num, { cloud_pos_x,0 }, { 1,1 }, { rain_pos,0 }, { 1920,1080 }, { 0,0 }, 0);
         GameLib::texture::end(ui[2].tex_num);
+        GameLib::texture::begin(ui[7].tex_num);
+        GameLib::texture::draw(ui[7].tex_num, { 800,900 }, { 2,2 }, { 0,0 }, { 64,64 }, { 32,32 }, 0);
+        GameLib::texture::end(ui[7].tex_num);
+        GameLib::texture::begin(ui[7].tex_num);
+        GameLib::texture::draw(ui[7].tex_num, { 1700,900 }, { 2,2 }, { 0,0 }, { 64,64 }, { 32,32 }, 0);
+        GameLib::texture::end(ui[7].tex_num);
     }
     if (weather == Weather::thunder)
     {
         GameLib::texture::begin(ui[3].tex_num);
         GameLib::texture::draw(ui[3].tex_num, { 0,0 }, { 1,1 }, { thunder_pos,0 }, { 1920,1080 }, { 0,0 }, 0);
         GameLib::texture::end(ui[3].tex_num);
+        GameLib::texture::begin(ui[7].tex_num);
+        GameLib::texture::draw(ui[7].tex_num, { 500,900 }, { 2,2 }, { 0,0 }, { 64,64 }, { 32,32 }, 0);
+        GameLib::texture::end(ui[7].tex_num);
+        GameLib::texture::begin(ui[7].tex_num);
+        GameLib::texture::draw(ui[7].tex_num, { 1400,900 }, { 2,2 }, { 0,0 }, { 64,64 }, { 32,32 }, 0);
+        GameLib::texture::end(ui[7].tex_num);
     }
     GameLib::texture::begin(ui[0].tex_num);
     GameLib::texture::draw(ui[0].tex_num, { cloud_pos_x,0 }, { 1,1 }, { 0,0 }, { 1920,360 }, { 0,0 }, 0);
@@ -240,6 +270,10 @@ void GameScene::draw()
     GameLib::texture::begin(ui[5].tex_num);
     GameLib::texture::draw(ui[5].tex_num, { cursorPos }, { 2,2 }, { 0,0 }, { 32,32 }, { 16,16 });
     GameLib::texture::end(ui[5].tex_num);
+    GameLib::texture::begin(ui[6].tex_num);
+    GameLib::texture::draw(ui[6].tex_num, { 80,80 }, { 7,7 }, { coin_anime,0 }, { 16,16 }, { 8,8 });
+    GameLib::texture::end(ui[6].tex_num);
+    
     GameLib::debug::setString("stage_num%d", stageNumber);
 
     b = std::to_string(a);

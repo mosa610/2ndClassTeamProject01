@@ -106,9 +106,9 @@ void Item::draw()
     GameLib::texture::begin(15);
     GameLib::texture::draw(15, { itemUi[ItemNo::CHAINSAW].position }, { 4,4 }, { 0,0 }, { 32,32 }, { 16,16 }, 0);
     GameLib::texture::end(15);
-    GameLib::debug::setString("cursor%d", GameLib::input::getCursorPosX());
-    GameLib::debug::setString("cursor%d", GameLib::input::getCursorPosY());
-    GameLib::debug::setString("drag%d", drag_con[0]);
+    //GameLib::debug::setString("cursor%d", GameLib::input::getCursorPosX());
+    //GameLib::debug::setString("cursor%d", GameLib::input::getCursorPosY());
+    //GameLib::debug::setString("drag%d", drag_con[0]);
 
 }
 
