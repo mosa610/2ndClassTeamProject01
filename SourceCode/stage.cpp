@@ -44,8 +44,8 @@ Stage_script stageWeather[4][2] = {
         {-1,0,0}
     },
     {
-        {10,0,0,0,0,0,0,0,true},
-        {90,0,0,0,0,0,0,0,true},
+        {10,0,0,0,0,0,0,0,true,Weather::thunder},
+        {90,0,0,0,0,0,0,0,true,Weather::rain},
     },
     {
         {-1,0,0}

@@ -42,7 +42,7 @@ int timer_do_weather = 0;
 std::string gametimer;
 std::string cost;
 
-void DoWeather(int currentWeather);
+void DoWeather(int currentWeather, Weather tr);
 
 void GameScene::init()
 {
@@ -183,7 +183,7 @@ void GameScene::update()
 
         if (timer_ >= stageWeather[stageNumber][i].time * 60 && stageWeather[stageNumber][i].weather == true)
         {
-            DoWeather(i);
+            DoWeather(i, stageWeather[stageNumber][i].tr);
         }
         if (stageWeather[stageNumber][i].weather == true)
         {
@@ -309,13 +309,13 @@ void GameScene::reset()
     weatherTimer = 0;
 }
 
-void DoWeather(int currentWeather)
+void DoWeather(int currentWeather,Weather tr)
 {
     cloud_pos_x += addSpeed;
     if (cloud_pos_x == 0)
     {
         addSpeed = 0;
-        weather = Weather::rain;
+        weather = tr;
 
         weatherTimer++;
     }
