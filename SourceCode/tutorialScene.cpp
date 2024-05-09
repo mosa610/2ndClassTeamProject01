@@ -1,4 +1,5 @@
 #include "tutorialScene.h"
+#include "GameScene.h"
 #include "Texture_data.h"
 
 TutorialScene TutorialScene::instance_;
@@ -7,7 +8,7 @@ extern int timer;
 void TutorialScene::init()
 {
     timer = 0;
-
+  
 }
 
 void TutorialScene::deinit()
