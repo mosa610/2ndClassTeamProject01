@@ -14,6 +14,6 @@ struct Stage_script
     int weather;
 };
 // ƒOƒ[ƒoƒ‹‚É‚µ‚Ä‚²‚ß‚ñ
-int stage_num;
+int stageNumber;
 
 extern Stage_script stage[][7];
