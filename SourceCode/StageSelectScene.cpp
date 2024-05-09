@@ -39,7 +39,7 @@ void StageSelectScene::update()
             cursorPos.x < stage01.x + 350 &&
             cursorPos.y < stage01.y + 200)
         {
-            stageNumber = 1;
+            stageNumber = 0;
             MusicManager::Instance().TRG_play(SE::SELECT);
             changeScene(GameScene::instance());
             MusicManager::Instance().Stop(BGM::TITLE);
