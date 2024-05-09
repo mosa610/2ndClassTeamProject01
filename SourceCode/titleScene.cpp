@@ -4,6 +4,7 @@
 #include "tutorialScene.h"
 #include "Texture_data.h"
 #include "mouse.h"
+#include "MusicManager.h"
 
 TitleScene TitleScene::instance_;
 int timer;
@@ -64,6 +65,8 @@ void TitleScene::update()
             changeScene(TutorialScene::instance());
         }
     }
+
+    MusicManager::Instance().STATE_play(BGM::TITLE, true);
 }
 
 void TitleScene::draw()

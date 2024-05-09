@@ -65,7 +65,8 @@ void GameScene::init()
     hage_texpos_y = 0;
     coin_anime = 0;
     coinTimer = 0;
-    gameTimer = 0;
+    acceleration = false;
+    gameTimer = stageTime[stageNumber][0].time;
     timer_do_weather = 0;
     status_.setCurrentCost(0);
     for (int i = 50; i < 55; i++)
@@ -82,7 +83,7 @@ void GameScene::init()
     GameLib::texture::load(ui[7].tex_num, ui[7].filename);
 
     newEffect(7);
-
+    timer_ = 0;
     nextScene_ = nullptr;
 }
 
@@ -159,6 +160,10 @@ void GameScene::update()
         if (building_[i])
         {
             building_[i]->update();
+            if (building_[i]->game_over == true)
+            {
+                changeScene(GameOverScene::instance());
+            }
         }
     }
     for (int i = 0; i < currentItemNum; i++)
@@ -198,9 +203,9 @@ void GameScene::update()
 
     if (timer_ % 60 == 0)
     {
-        gameTimer++;
+        gameTimer--;
     }
-    if (gameTimer >= 180)
+    if (gameTimer < 0)
     {
         changeScene(GameClearScene::instance());
     }
@@ -276,7 +281,7 @@ void GameScene::draw()
     GameLib::text_out(1, cost, 150, 40, 3, 3, 1, 1, 1, 1);
 
     gametimer = std::to_string(gameTimer);
-    GameLib::text_out(1, gametimer, 900, 40, 3, 3, 1, 1, 1, 1);
+    GameLib::text_out(1, gametimer, SCREEN_W*0.5f, 50, 3, 3, 1, 1, 1, 1,GameLib::TEXT_ALIGN::MIDDLE);
     //GameLib::debug::setString("stage_num%d", stageNumber);
 
 }

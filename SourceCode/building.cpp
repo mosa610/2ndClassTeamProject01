@@ -65,6 +65,7 @@ building::building(Stage_script* stage, float position_x, int tex_num,float scal
     buildStatus = status;
     GameLib::texture::load(ui[4].tex_num, ui[4].filename);
     hageHit = false;
+    game_over = false;
     //effect_ = new Effect * [effectNum];
 }
 
@@ -82,6 +83,7 @@ void building::update()
 {
     hageHit = false;
     texSize.y = -maxTexSize.y * (HP / MAX_HP);
+    if (HP == MAX_HP) game_over = true;
     if (timer % 12 == 0 && break_build == false)
     {
 
