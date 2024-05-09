@@ -16,6 +16,7 @@ float hage_scale_x = 2;
 extern float hage_texpos_x;
 int plusHP;
 extern int weather;
+bool doEffect;
 
 building::building()
 {
@@ -311,6 +312,7 @@ void building::hit(Item* item, int current_item)
         {
             if (TRG_RELEASE(0) & GameLib::input::PAD_START)
             {
+                doEffect = true;
                 switch (i)
                 {
                 case ItemNo::AXE:
@@ -321,6 +323,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::CHAINSAW:
                     if (weather == Weather::thunder)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -333,6 +336,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::FIRE:
                     if (weather == Weather::rain)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -350,6 +354,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::DRILL:
                     if (weather == Weather::thunder)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -362,6 +367,7 @@ void building::hit(Item* item, int current_item)
                 case ItemNo::DYNAMITE:
                     if (weather == Weather::rain)
                     {
+                        doEffect = false;
                         break;
                     }
                     else
@@ -392,13 +398,16 @@ void building::hit(Item* item, int current_item)
                     plusHP = static_cast<int>(((distHP - HP) * (distHP / MAX_HP)) / 2);
 
 
-                    effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
+                    if (doEffect)
+                    {
+                        effect_[currentEffectNum] = new Effect(0, { 0,0 }, { 8,8 }, { 0,32 }, { 0,32 }, { 16,16 }, 50);
 
 
-                    effect_[currentEffectNum]->effect_pos.x = item_pos.x;
-                    effect_[currentEffectNum]->effect_pos.y = item_pos.y;
-                    effct_anime = true;
-                    effectanimeNum = i;
+                        effect_[currentEffectNum]->effect_pos.x = item_pos.x;
+                        effect_[currentEffectNum]->effect_pos.y = item_pos.y;
+                        effct_anime = true;
+                        effectanimeNum = i;
+                    }
 
                     //}
                     //currentEffectNum++;
